@@ -1,6 +1,6 @@
 .catalog:
   name: Guisso
-  version: 1.2.1
+  version: 1.3-pre1
   description: InSTEDD Guisso
   minimum_rancher_version: v1.5.0
   questions:
