@@ -1,0 +1,8 @@
+name: Guisso
+description: |
+  InSTEDD Guisso
+version: 1.2.1
+category: Security
+maintainer: Juan Wajnerman <waj@manas.tech>
+license: The MIT License
+projectURL: https://www.github.com/instedd/guisso

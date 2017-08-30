@@ -1,0 +1,19 @@
+version: '2'
+services:
+  db-migrate:
+    image: instedd/guisso:1.2.1
+    environment:
+      DATABASE_URL: mysql2://${DATABASE_USER}:${DATABASE_PASS}@${DATABASE_HOST}/${DATABASE_NAME}
+    command:
+    - /app/migrate
+    labels:
+      io.rancher.container.start_once: 'true'
+  guisso:
+    image: instedd/guisso:1.2.1
+    environment:
+      DATABASE_URL: mysql2://${DATABASE_USER}:${DATABASE_PASS}@${DATABASE_HOST}/${DATABASE_NAME}
+      RAILS_CONFIG__action_mailer__smtp_settings__user_name: ${SMTP_USER}
+      RAILS_CONFIG__action_mailer__smtp_settings__password: ${SMTP_PASS}
+      RAILS_CONFIG__action_mailer__smtp_settings__address: ${SMTP_HOST}
+      RAILS_CONFIG__action_mailer__smtp_settings__port: ${SMTP_PORT}
+      DEVISE_EMAIL: ${DEVISE_EMAIL}
