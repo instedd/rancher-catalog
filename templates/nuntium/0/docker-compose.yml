@@ -39,6 +39,10 @@ services:
     <<: *rails
     command: "bundle exec lib/services/scheduled_jobs_service_daemon.rb"
 
+  smpp:
+    <<: *rails
+    command: "bundle exec lib/services/smpp_service_daemon.rb"
+
   db-migrate:
     <<: *rails
     command: /app/migrate
