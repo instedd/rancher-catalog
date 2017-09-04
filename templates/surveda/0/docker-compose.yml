@@ -33,6 +33,8 @@ services:
       VERBOICE_CLIENT_SECRET: ${VERBOICE_CLIENT_SECRET}
       VERBOICE_GUISSO_BASE_URL: ${VERBOICE_GUISSO_BASE_URL}
     command:
-    - /bin/sh
-    - -c
-    - mix ecto.migrate && elixir --sname server -S mix phoenix.server
+      - /bin/sh
+      - -c
+      - mix ecto.migrate && elixir --sname server -S mix phoenix.server
+    labels:
+      io.rancher.container.pull_image: always
