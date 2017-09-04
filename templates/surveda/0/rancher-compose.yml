@@ -63,7 +63,7 @@
     - variable: GOOGLE_URL_SHORTENER_API_KEY
       label: API Key for the Google URL shortener
       type: string
-      required: true
+      required: false
 
     - variable: INITIAL_ELIGIBILITY_RATE
       label: Initial elegibility rate (%)
