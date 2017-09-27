@@ -1,7 +1,7 @@
 name: Nuntium
 description: |
   InSTEDD Nuntium
-version: '1.10'
+version: '0.1'
 category: Messaging
 maintainer: Juan Wajnerman <waj@manas.tech>
 license: The MIT License
