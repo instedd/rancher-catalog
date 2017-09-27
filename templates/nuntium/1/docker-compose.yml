@@ -1,0 +1,50 @@
+version: '2'
+services:
+  web: &rails
+    image: instedd/nuntium:1.10-pre2
+    environment:
+      DATABASE_URL: mysql2://${DATABASE_USER}:${DATABASE_PASS}@${DATABASE_HOST}/${DATABASE_NAME}
+      MEMCACHE_SERVER: memcached:11211
+      RABBITMQ_URL: amqp://rabbitmq
+      {{- if eq .Values.GUISSO_ENABLED "true" }}
+      GUISSO_ENABLED: "true"
+      GUISSO_URL: ${GUISSO_URL}
+      GUISSO_CLIENT_ID: ${GUISSO_CLIENT_ID}
+      GUISSO_CLIENT_SECRET: ${GUISSO_CLIENT_SECRET}
+      {{- end }}
+
+  memcached:
+    image: memcached:1.4.24
+
+  rabbitmq:
+    image: rabbitmq:3.6
+    environment:
+      RABBITMQ_DEFAULT_USER: nuntium
+      RABBITMQ_DEFAULT_PASS: nuntium
+      RABBITMQ_DEFAULT_VHOST: /nuntium
+
+  workerfast:
+    <<: *rails
+    command: "bundle exec lib/services/generic_worker_daemon.rb production fast 1000"
+
+  workerslow:
+    <<: *rails
+    command: "bundle exec lib/services/generic_worker_daemon.rb production slow 2000"
+
+  cron:
+    <<: *rails
+    command: "bundle exec lib/services/cron_daemon.rb"
+
+  sched:
+    <<: *rails
+    command: "bundle exec lib/services/scheduled_jobs_service_daemon.rb"
+
+  smpp:
+    <<: *rails
+    command: "bundle exec lib/services/smpp_service_daemon.rb"
+
+  db-migrate:
+    <<: *rails
+    command: /app/migrate
+    labels:
+      io.rancher.container.start_once: "true"

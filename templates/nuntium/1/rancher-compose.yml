@@ -1,0 +1,39 @@
+.catalog:
+  name: Nuntium
+  version: '1.10'
+  description: InSTEDD Nuntium
+  minimum_rancher_version: v1.5.0
+  questions:
+    - variable: DATABASE_HOST
+      label: Database Host
+      required: true
+      type: string
+      default: db
+    - variable: DATABASE_USER
+      label: Database User
+      required: true
+      type: string
+      default: root
+    - variable: DATABASE_PASS
+      label: Database Password
+      type: password
+    - variable: DATABASE_NAME
+      label: Database Name
+      type: string
+      required: true
+      default: nuntium
+
+    - variable: GUISSO_ENABLED
+      label: Use GUISSO
+      required: true
+      type: boolean
+      default: false
+    - variable: GUISSO_URL
+      label: GUISSO URL
+      type: string
+    - variable: GUISSO_CLIENT_ID
+      label: GUISSO client ID
+      type: string
+    - variable: GUISSO_CLIENT_SECRET
+      label: GUISSO client secret
+      type: password
