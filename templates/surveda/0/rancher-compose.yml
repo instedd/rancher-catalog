@@ -64,6 +64,10 @@
       label: API Key for the Google URL shortener
       type: string
       required: false
+    - variable: MOBILE_WEB_BASE_URL
+      label: Base URL for mobile web respondent links
+      type: string
+      required: false
 
     - variable: INITIAL_ELIGIBILITY_RATE
       label: Initial elegibility rate (%)
