@@ -8,6 +8,15 @@
       label: Nuntium version
       required: true
       type: string
+    - variable: SCHEME
+      label: Scheme used to access this server
+      required: true
+      type: string
+      default: https
+    - variable: HOSTNAME
+      label: Hostname for this server
+      required: true
+      type: string
 
     - variable: DATABASE_HOST
       label: Database Host

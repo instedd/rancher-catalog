@@ -12,6 +12,8 @@ services:
       GUISSO_CLIENT_ID: ${GUISSO_CLIENT_ID}
       GUISSO_CLIENT_SECRET: ${GUISSO_CLIENT_SECRET}
       {{- end }}
+      SCHEME: ${SCHEME}
+      HOSTNAME: ${HOSTNAME}
 
   memcached:
     image: memcached:1.4.24
