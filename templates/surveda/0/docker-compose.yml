@@ -1,5 +1,16 @@
 version: '2'
 services:
+  db-migrate:
+    image: instedd/ask:${SURVEDA_VERSION}
+    environment:
+      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_PASS: ${DATABASE_PASS}
+      DATABASE_USER: ${DATABASE_USER}
+      DISABLE_REPO_TIMEOUT: "true"
+    labels:
+      io.rancher.container.start_once: "true"
+
   app:
     image: instedd/ask:${SURVEDA_VERSION}
     environment:
@@ -35,9 +46,5 @@ services:
       VERBOICE_CLIENT_ID: ${VERBOICE_CLIENT_ID}
       VERBOICE_CLIENT_SECRET: ${VERBOICE_CLIENT_SECRET}
       VERBOICE_GUISSO_BASE_URL: ${VERBOICE_GUISSO_BASE_URL}
-    command:
-      - /bin/sh
-      - -c
-      - mix ecto.migrate && elixir --sname server -S mix phoenix.server
     labels:
       io.rancher.container.pull_image: always
