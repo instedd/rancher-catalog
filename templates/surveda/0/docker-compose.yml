@@ -36,15 +36,52 @@ services:
       SMTP_PORT: ${SMTP_PORT}
       SMTP_SERVER: ${SMTP_SERVER}
       SMTP_USER: ${SMTP_USER}
+
+      {{- if contains "," .Values.NUNTIUM_APP_ID }}
+      {{- $nuntiumAppIds := split "," .Values.NUNTIUM_APP_ID }}
+      {{- $nuntiumBaseUrls := split "," .Values.NUNTIUM_BASE_URL }}
+      {{- $nuntiumClientIds := split "," .Values.NUNTIUM_CLIENT_ID }}
+      {{- $nuntiumClientSecrets := split "," .Values.NUNTIUM_CLIENT_SECRET }}
+      {{- $nuntiumGuissoBaseUrls := split "," .Values.NUNTIUM_GUISSO_BASE_URL }}
+      NUNTIUM_INSTANCES: {{ $nuntiumAppIds | len }}
+      {{- range $key, $value := $nuntiumAppIds }}
+      {{- $index := substr 1 -1 $key | atoi | add1 }}
+      NUNTIUM_APP_ID_{{ $index }}: {{ $value | trim }}
+      NUNTIUM_BASE_URL_{{ $index }}: {{ index $nuntiumBaseUrls $key | trim }}
+      NUNTIUM_CLIENT_ID_{{ $index }}: {{ index $nuntiumClientIds $key | trim }}
+      NUNTIUM_CLIENT_SECRET_{{ $index }}: {{ index $nuntiumClientSecrets $key | trim }}
+      NUNTIUM_GUISSO_BASE_URL_{{ $index }}: {{ index $nuntiumGuissoBaseUrls $key | trim }}
+      {{- end }}
+      {{- else }}
       NUNTIUM_APP_ID: ${NUNTIUM_APP_ID}
       NUNTIUM_BASE_URL: ${NUNTIUM_BASE_URL}
       NUNTIUM_CLIENT_ID: ${NUNTIUM_CLIENT_ID}
       NUNTIUM_CLIENT_SECRET: ${NUNTIUM_CLIENT_SECRET}
       NUNTIUM_GUISSO_BASE_URL: ${NUNTIUM_GUISSO_BASE_URL}
+      {{- end }}
+
+      {{- if contains "," .Values.VERBOICE_APP_ID }}
+      {{- $verboiceAppIds := split "," .Values.VERBOICE_APP_ID }}
+      {{- $verboiceBaseUrls := split "," .Values.VERBOICE_BASE_URL }}
+      {{- $verboiceClientIds := split "," .Values.VERBOICE_CLIENT_ID }}
+      {{- $verboiceClientSecrets := split "," .Values.VERBOICE_CLIENT_SECRET }}
+      {{- $verboiceGuissoBaseUrls := split "," .Values.VERBOICE_GUISSO_BASE_URL }}
+      VERBOICE_INSTANCES: {{ $verboiceAppIds | len }}
+      {{- range $key, $value := $verboiceAppIds }}
+      {{- $index := substr 1 -1 $key | atoi | add1 }}
+      VERBOICE_APP_ID_{{ $index }}: {{ $value | trim }}
+      VERBOICE_BASE_URL_{{ $index }}: {{ index $verboiceBaseUrls $key | trim }}
+      VERBOICE_CLIENT_ID_{{ $index }}: {{ index $verboiceClientIds $key | trim }}
+      VERBOICE_CLIENT_SECRET_{{ $index }}: {{ index $verboiceClientSecrets $key | trim }}
+      VERBOICE_GUISSO_BASE_URL_{{ $index }}: {{ index $verboiceGuissoBaseUrls $key | trim }}
+      {{- end }}
+      {{- else }}
       VERBOICE_APP_ID: ${VERBOICE_APP_ID}
       VERBOICE_BASE_URL: ${VERBOICE_BASE_URL}
       VERBOICE_CLIENT_ID: ${VERBOICE_CLIENT_ID}
       VERBOICE_CLIENT_SECRET: ${VERBOICE_CLIENT_SECRET}
       VERBOICE_GUISSO_BASE_URL: ${VERBOICE_GUISSO_BASE_URL}
+      {{- end }}
+
     labels:
       io.rancher.container.pull_image: always
