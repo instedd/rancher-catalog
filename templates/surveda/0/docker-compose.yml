@@ -51,6 +51,7 @@ services:
       {{- $nuntiumClientIds := split "," .Values.NUNTIUM_CLIENT_ID }}
       {{- $nuntiumClientSecrets := split "," .Values.NUNTIUM_CLIENT_SECRET }}
       {{- $nuntiumGuissoBaseUrls := split "," .Values.NUNTIUM_GUISSO_BASE_URL }}
+      {{- $nuntiumFriendlyNames := split "," .Values.NUNTIUM_FRIENDLY_NAME }}
       NUNTIUM_INSTANCES: {{ $nuntiumAppIds | len }}
       {{- range $key, $value := $nuntiumAppIds }}
       {{- $index := substr 1 -1 $key | atoi | add1 }}
@@ -59,6 +60,7 @@ services:
       NUNTIUM_CLIENT_ID_{{ $index }}: {{ index $nuntiumClientIds $key | trim }}
       NUNTIUM_CLIENT_SECRET_{{ $index }}: {{ index $nuntiumClientSecrets $key | trim }}
       NUNTIUM_GUISSO_BASE_URL_{{ $index }}: {{ index $nuntiumGuissoBaseUrls $key | trim }}
+      NUNTIUM_FRIENDLY_NAME_{{ $index }}: {{ index $nuntiumFriendlyNames $key | trim }}
       {{- end }}
       {{- else }}
       NUNTIUM_APP_ID: ${NUNTIUM_APP_ID}
@@ -74,6 +76,7 @@ services:
       {{- $verboiceClientIds := split "," .Values.VERBOICE_CLIENT_ID }}
       {{- $verboiceClientSecrets := split "," .Values.VERBOICE_CLIENT_SECRET }}
       {{- $verboiceGuissoBaseUrls := split "," .Values.VERBOICE_GUISSO_BASE_URL }}
+      {{- $verboiceFriendlyNames := split "," .Values.VERBOICE_FRIENDLY_NAME }}
       VERBOICE_INSTANCES: {{ $verboiceAppIds | len }}
       {{- range $key, $value := $verboiceAppIds }}
       {{- $index := substr 1 -1 $key | atoi | add1 }}
@@ -82,6 +85,7 @@ services:
       VERBOICE_CLIENT_ID_{{ $index }}: {{ index $verboiceClientIds $key | trim }}
       VERBOICE_CLIENT_SECRET_{{ $index }}: {{ index $verboiceClientSecrets $key | trim }}
       VERBOICE_GUISSO_BASE_URL_{{ $index }}: {{ index $verboiceGuissoBaseUrls $key | trim }}
+      VERBOICE_FRIENDLY_NAME_{{ $index }}: {{ index $verboiceFriendlyNames $key | trim }}
       {{- end }}
       {{- else }}
       VERBOICE_APP_ID: ${VERBOICE_APP_ID}
