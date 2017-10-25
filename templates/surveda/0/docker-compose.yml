@@ -2,6 +2,7 @@ version: '2'
 services:
   db-migrate:
     image: instedd/ask:${SURVEDA_VERSION}
+    command: mix ecto.migrate
     environment:
       DATABASE_HOST: ${DATABASE_HOST}
       DATABASE_NAME: ${DATABASE_NAME}
