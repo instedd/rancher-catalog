@@ -104,6 +104,21 @@
       type: string
       required: false
 
+    - variable: GUISSO_ENABLED
+      label: Enable Guisso for SSO
+      type: boolean
+      default: false
+      required: true
+    - variable: GUISSO_BASE_URL
+      label: GUISSO base URL
+      type: string
+    - variable: GUISSO_CLIENT_ID
+      label: GUISSO client ID
+      type: string
+    - variable: GUISSO_CLIENT_SECRET
+      label: GUISSO client secret
+      type: password
+
     - variable: NUNTIUM_BASE_URL
       label: Nuntium base URL
       type: string

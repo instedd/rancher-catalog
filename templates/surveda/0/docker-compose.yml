@@ -37,6 +37,13 @@ services:
       SMTP_SERVER: ${SMTP_SERVER}
       SMTP_USER: ${SMTP_USER}
 
+      {{- if eq .Values.GUISSO_ENABLED "true" }}
+      GUISSO_ENABLED: 'true'
+      GUISSO_BASE_URL: ${GUISSO_BASE_URL}
+      GUISSO_CLIENT_ID: ${GUISSO_CLIENT_ID}
+      GUISSO_CLIENT_SECRET: ${GUISSO_CLIENT_SECRET}
+      {{- end }}
+
       {{- if contains "," .Values.NUNTIUM_APP_ID }}
       {{- $nuntiumAppIds := split "," .Values.NUNTIUM_APP_ID }}
       {{- $nuntiumBaseUrls := split "," .Values.NUNTIUM_BASE_URL }}
