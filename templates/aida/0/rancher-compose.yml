@@ -83,6 +83,15 @@
       type: password
       required: true
 
+    - variable: AWS_ACCESS_KEY_ID
+      label: AWS Access key ID (used by the runtime)
+      type: string
+      required: true
+    - variable: AWS_SECRET_ACCESS_KEY
+      label: AWS Secret access key (used by the runtime)
+      type: password
+      required: true
+
     - variable: SENTRY_DSN
       label: Sentry DSN
       type: string
