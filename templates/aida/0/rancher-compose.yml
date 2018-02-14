@@ -78,6 +78,10 @@
       label: Secret key base (used to sign/encrypt session tokens)
       type: password
       required: true
+    - variable: PRIVATE_KEY
+      label: Runtime private key
+      type: password
+      required: true
 
     - variable: SENTRY_DSN
       label: Sentry DSN
