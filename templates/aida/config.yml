@@ -1,0 +1,8 @@
+name: Aida
+description: |
+  InSTEDD Aida
+version: '0.1'
+category: Bots
+maintainer: Juan Wajnerman <waj@manas.tech>
+license: The MIT License
+projectURL: https://www.github.com/instedd/aida

@@ -1,0 +1,90 @@
+.catalog:
+  name: Aida
+  version: '0.1'
+  description: InSTEDD Aida
+  minimum_rancher_version: v1.5.0
+  questions:
+    - variable: RUNTIME_VERSION
+      label: Runtime version
+      required: true
+      type: string
+    - variable: UI_VERSION
+      label: UI version
+      required: true
+      type: string
+
+    - variable: HOSTNAME
+      label: Host name
+      required: true
+      type: string
+
+    - variable: DATABASE_HOST
+      label: Database Host
+      required: true
+      type: string
+      default: db
+    - variable: DATABASE_USER
+      label: Database User
+      required: true
+      type: string
+      default: root
+    - variable: DATABASE_PASS
+      label: Database Password
+      type: password
+    - variable: RUNTIME_DATABASE_NAME
+      label: Runtime database name
+      type: string
+      required: true
+      default: aida
+    - variable: RUNTIME_DATABASE_NAME
+      label: UI database name
+      type: string
+      required: true
+      default: aida_ui
+
+    - variable: GUISSO_BASE_URL
+      label: GUISSO base URL
+      type: string
+      required: true
+      default: https://login.instedd.org
+    - variable: GUISSO_CLIENT_ID
+      label: GUISSO client ID
+      type: string
+      required: true
+    - variable: GUISSO_CLIENT_SECRET
+      label: GUISSO client secret
+      type: password
+      required : true
+
+    - variable: SMTP_HOST
+      label: SMTP Host
+      required: true
+      type: string
+      default: email-smtp.us-east-1.amazonaws.com
+    - variable: SMTP_USER
+      label: SMTP User
+      required: true
+      type: string
+    - variable: SMTP_PASS
+      label: SMTP Password
+      type: password
+    - variable: SMTP_PORT
+      label: SMTP Port
+      type: int
+      required: true
+      default: 587
+
+    - variable: SECRET_KEY_BASE
+      label: Secret key base (used to sign/encrypt session tokens)
+      type: password
+      required: true
+
+    - variable: SENTRY_DSN
+      label: Sentry DSN
+      type: string
+      required: false
+    - variable: SENTRY_PUBLIC_DSN
+      label: Sentry Public DSN
+      type: string
+      required: false
+
