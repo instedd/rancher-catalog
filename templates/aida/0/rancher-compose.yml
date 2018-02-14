@@ -42,8 +42,8 @@
       required: true
       default: aida_ui
 
-    - variable: GUISSO_BASE_URL
-      label: GUISSO base URL
+    - variable: GUISSO_URL
+      label: GUISSO URL
       type: string
       required: true
       default: https://login.instedd.org
