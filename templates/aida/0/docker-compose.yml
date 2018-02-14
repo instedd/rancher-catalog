@@ -19,7 +19,7 @@ services:
   ui: &ui
     image: instedd/aida-ui:${UI_VERSION}
     environment:
-      DATABASE_URL: postgres://${DATABASE_USER}:${DATABASE_PASS}@${DATABASE_HOST}/${RUNTIME_DATABASE_NAME}
+      DATABASE_URL: postgres://${DATABASE_USER}:${DATABASE_PASS}@${DATABASE_HOST}/${UI_DATABASE_NAME}
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
       SETTINGS__BACKEND__URL: http://runtime
       SENTRY_DSN: ${SENTRY_DSN}
