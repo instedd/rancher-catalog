@@ -12,7 +12,7 @@ services:
       io.rancher.container.pull_image: always
   runtime-db-migrate:
     <<: *runtime
-    command: mix ecto.setup
+    command: mix ecto.migrate
     labels:
       io.rancher.container.pull_image: always
       io.rancher.container.start_once: "true"
@@ -46,7 +46,7 @@ services:
     command:
       - /bin/sh
       - -c
-      - rake db:setup || rake db:migrate
+      - rake db:migrate
     labels:
       io.rancher.container.start_once: "true"
       io.rancher.container.pull_image: always
