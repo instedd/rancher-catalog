@@ -12,7 +12,7 @@ services:
       io.rancher.container.pull_image: always
   runtime-db-migrate:
     <<: *runtime
-    command: mix ecto.migrate
+    command: mix ecto.setup
     labels:
       io.rancher.container.pull_image: always
       io.rancher.container.start_once: "true"
