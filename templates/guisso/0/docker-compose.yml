@@ -3,7 +3,7 @@ services:
   db-migrate:
     image: instedd/guisso:${GUISSO_VERSION}
     environment:
-      DATABASE_URL: mysql2://${DATABASE_USER}:${DATABASE_PASS}@${DATABASE_HOST}/${DATABASE_NAME}
+      DATABASE_URL: ${DATABASE_TYPE}://${DATABASE_USER}:${DATABASE_PASS}@${DATABASE_HOST}/${DATABASE_NAME}
     command:
     - /app/migrate
     labels:

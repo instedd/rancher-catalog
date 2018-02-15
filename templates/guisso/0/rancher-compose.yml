@@ -9,6 +9,14 @@
       required: true
       type: string
 
+    - variable: DATABASE_TYPE
+      label: Database type
+      required: true
+      type: enum
+      default: mysql2
+      options:
+        - mysql2
+        - postgresql
     - variable: DATABASE_HOST
       label: Database Host
       required: true
