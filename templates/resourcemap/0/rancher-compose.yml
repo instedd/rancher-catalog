@@ -1,0 +1,115 @@
+.catalog:
+  name: ResourceMap
+  version: '0.1'
+  description: InSTEDD ResourceMap
+  minimum_rancher_version: v1.5.0
+  questions:
+    - variable: RESMAP_VERSION
+      label: ResourceMap version
+      required: true
+      type: string
+
+    - variable: HOSTNAME
+      label: Host name
+      required: true
+      type: string
+
+    - variable: DATABASE_HOST
+      label: Database Host
+      required: true
+      type: string
+    - variable: DATABASE_USER
+      label: Database User
+      required: true
+      type: string
+    - variable: DATABASE_PASS
+      label: Database Password
+      type: password
+    - variable: DATABASE_NAME
+      label: Database Name
+      type: string
+      required: true
+
+    - variable: ELASTICSEARCH_URL
+      label: Elasticsearch Url
+      required: true
+      type: string
+
+    - variable: GUISSO_ENABLED
+      label: Use GUISSO
+      required: true
+      type: boolean
+      default: true
+    - variable: GUISSO_URL
+      label: GUISSO URL
+      type: string
+      default: https://login.instedd.org
+    - variable: GUISSO_CLIENT_ID
+      label: GUISSO Client ID
+      type: string
+    - variable: GUISSO_CLIENT_SECRET
+      label: GUISSO Client Secret
+      type: password
+
+    - variable: SMTP_HOST
+      label: SMTP Host
+      required: true
+      type: string
+      default: email-smtp.us-east-1.amazonaws.com
+    - variable: SMTP_USER
+      label: SMTP User
+      required: true
+      type: string
+    - variable: SMTP_PASS
+      label: SMTP Password
+      type: password
+    - variable: SMTP_PORT
+      label: SMTP Port
+      type: int
+      required: true
+      default: 587
+
+    - variable: SECRET_KEY_BASE
+      label: Secret Key Base (used to sign/encrypt session tokens)
+      type: password
+      required: true
+    - variable: GOOGLE_MAPS_KEY
+      label: Google Maps JavaScript API Key
+      description: Obtain from https://developers.google.com/maps/documentation/javascript/get-api-key
+      required: true
+      type: string
+    - variable: NEWRELIC_LICENSE_KEY
+      label: New Relic License Key
+      type: string
+
+    - variable: NUNTIUM_URL
+      label: Nuntium Host
+      type: string
+      default: http://nuntium.instedd.org
+    - variable: NUNTIUM_ACCOUNT
+      label: Nuntium Account
+      type: string
+    - variable: NUNTIUM_APPLICATION
+      label: Nuntium Application
+      type: string
+    - variable: NUNTIUM_PASSWORD
+      label: Nuntium Password
+      type: string
+
+    - variable: VOLUME_DRIVER
+      label: Volume Driver
+      type: string
+      default: rancher-nfs
+      required: true
+    - variable: VOLUME_REDIS
+      label: Redis Volume
+      type: string
+      required: true
+    - variable: VOLUME_UPLOADS
+      label: Uploads Volume
+      type: string
+      required: true
+    - variable: VOLUME_IMPORT_WIZARD
+      label: Import Wizard Temp Volume
+      type: string
+      required: true

@@ -1,0 +1,8 @@
+name: ResourceMap
+description: |
+  InSTEDD ResourceMap
+version: '0.1'
+category: Map
+maintainer: Juan Wajnerman <waj@manas.tech>
+license: The MIT License
+projectURL: https://www.github.com/instedd/resourcemap
