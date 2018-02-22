@@ -6,6 +6,7 @@ services:
     labels:
       io.rancher.container.pull_image: always
     environment:
+      INSTEDD_THEME: https://a4b5cff76c528f65ea0a-27a040455636240d133755398736da07.ssl.cf2.rackcdn.com
       RAILS_ENV: production
       ELASTICSEARCH_URL: ${ELASTICSEARCH_URL}
       REDIS_URL: 'redis://redis:6379'
