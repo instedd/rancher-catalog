@@ -1,0 +1,8 @@
+name: Facility Public Portal
+description: |
+  InSTEDD Facility Public Portal
+version: '0.1'
+category: Map
+maintainer: Juan Wajnerman <waj@manas.tech>
+license: The MIT License
+projectURL: https://www.github.com/instedd/facility-public-portal
