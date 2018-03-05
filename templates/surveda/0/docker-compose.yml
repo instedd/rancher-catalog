@@ -11,6 +11,7 @@ services:
       DISABLE_REPO_TIMEOUT: "true"
     labels:
       io.rancher.container.start_once: "true"
+      io.rancher.container.pull_image: always
 
   app:
     image: instedd/ask:${SURVEDA_VERSION}
