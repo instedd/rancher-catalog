@@ -73,6 +73,11 @@
       type: int
       required: true
       default: 587
+    - variable: EMAILS_FROM
+      label: Send emails from
+      required: true
+      type: string
+      default: noreply@instedd.org
 
     - variable: SECRET_KEY_BASE
       label: Secret key base (used to sign/encrypt session tokens)
