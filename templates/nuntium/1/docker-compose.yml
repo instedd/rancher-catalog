@@ -20,6 +20,9 @@ services:
 
   rabbitmq:
     image: rabbitmq:3.6
+    hostname: ${RABBITMQ_HOSTNAME}
+    volumes:
+      - ${RABBITMQ_VOLUME}:/var/lib/rabbitmq
     environment:
       RABBITMQ_DEFAULT_USER: nuntium
       RABBITMQ_DEFAULT_PASS: nuntium

@@ -51,3 +51,14 @@
     - variable: GUISSO_CLIENT_SECRET
       label: GUISSO client secret
       type: password
+
+    - variable: RABBITMQ_HOSTNAME
+      label: RabbitMQ container host name
+      required: true
+      type: string
+      default: nuntium-rabbitmq
+    - variable: RABBITMQ_VOLUME
+      label: Docker volume for RabbitMQ data
+      required: true
+      type: string
+      default: nuntium-rabbitmq-data
