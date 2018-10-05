@@ -137,6 +137,9 @@
     - variable: NUNTIUM_FRIENDLY_NAME
       label: Friendly name for Nuntium instance (only required when linking with more than one instance)
       type: string
+    - variable: NUNTIUM_CHANNEL_UI
+      label: Enable (true) or disable (false) embedded UI to create and edit channels in Nuntium
+      type: string
 
     - variable: VERBOICE_BASE_URL
       label: Verboice base URL
@@ -155,4 +158,7 @@
       type: string
     - variable: VERBOICE_FRIENDLY_NAME
       label: Friendly name for Verboice instance (only required when linking with more than one instance)
+      type: string
+    - variable: VERBOICE_CHANNEL_UI
+      label: Enable (true) or disable (false) embedded UI to create and edit channels in Verboice
       type: string
