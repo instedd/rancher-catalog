@@ -1,0 +1,8 @@
+name: Verboice
+description: |
+  InSTEDD Verboice
+version: '0.1'
+category: VoIP
+maintainer: Juan Wajnerman <waj@manas.tech>
+license: The MIT License
+projectURL: https://www.github.com/instedd/verboice

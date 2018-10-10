@@ -1,0 +1,66 @@
+version: '2'
+services:
+  asterisk-bridge:
+    privileged: true
+    image: instedd/host_bridge
+    environment:
+      INPUT_PORT: '5038'
+    labels:
+      io.rancher.container.pull_image: always
+  web:
+    image: instedd/verboice:${VERBOICE_VERSION}
+    environment:
+      BROKER_HOST: broker
+      BROKER_PORT: '9999'
+      DATABASE_URL: mysql2://${DATABASE_USER}:${DATABASE_PASS}@${DATABASE_HOST}/${DATABASE_NAME}
+      {{- if eq .Values.GUISSO_ENABLED "true" }}
+      GUISSO_ENABLED: 'true'
+      GUISSO_URL: ${GUISSO_URL}
+      GUISSO_CLIENT_ID: ${GUISSO_CLIENT_ID}
+      GUISSO_CLIENT_SECRET: ${GUISSO_CLIENT_SECRET}
+      {{- end }}
+      INSTEDD_THEME: ${INSTEDD_THEME}
+    volumes:
+    - ${VOLUME_DATA}:/app/data
+    labels:
+      io.rancher.container.pull_image: always
+  asterisk:
+    image: instedd/verboice-asterisk
+    environment:
+      AUTOCONFIG: ${VERBOICE_ASTERISK_AUTOCONFIG}
+      BROKER_HOST: broker
+    network_mode: host
+    volumes:
+    - ${VOLUME_ASTERISK_CONFIG}:/etc/asterisk/verboice
+    - ${VOLUME_SOUNDS}:/var/lib/asterisk/sounds/verboice
+    - ${VOLUME_DATA}:/data
+    ports:
+    - 5060:5060/udp
+    labels:
+      io.rancher.container.dns: 'true'
+      io.rancher.sidekicks: asterisk-bridge
+      io.rancher.container.pull_image: always
+  broker:
+    image: instedd/verboice-broker:${VERBOICE_VERSION}
+    environment:
+      AMI_HOST: asterisk-bridge.asterisk
+      BROKER_BIND: any
+      BROKER_HOST: broker
+      CRYPT_SECRET: super_secret
+      DB_HOST: ${DATABASE_HOST}
+      DB_NAME: ${DATABASE_NAME}
+      DB_PASS: ${DATABASE_PASS}
+      DB_USER: ${DATABASE_USER}
+      ASTERISK_RECORD_DIR: /data/call_logs/
+      BASE_URL: ${BASE_URL}
+      BROKER_HTTPD_BASE_URL: ${BASE_URL}
+      TWILIO_CALLBACK_URL: ${BASE_URL}/twilio
+    stdin_open: true
+    volumes:
+    - ${VOLUME_ASTERISK_CONFIG}:/usr/local/etc/asterisk
+    - ${VOLUME_SOUNDS}:/usr/local/var/lib/asterisk/sounds/verboice
+    - ${VOLUME_DATA}:/data
+    tty: true
+    pid: host
+    labels:
+      io.rancher.container.pull_image: always

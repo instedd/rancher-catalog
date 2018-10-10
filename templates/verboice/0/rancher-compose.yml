@@ -1,0 +1,77 @@
+.catalog:
+  name: Verboice
+  version: '0.1'
+  description: InSTEDD Verboice
+  minimum_rancher_version: v1.5.0
+  questions:
+    - variable: VERBOICE_VERSION
+      label: Verboice version
+      required: true
+      type: string
+    - variable: BASE_URL
+      label: Base URL
+      required: true
+      type: string
+
+    - variable: DATABASE_HOST
+      label: Database Host
+      required: true
+      type: string
+      default: db
+    - variable: DATABASE_USER
+      label: Database User
+      required: true
+      type: string
+      default: root
+    - variable: DATABASE_PASS
+      label: Database Password
+      type: password
+    - variable: DATABASE_NAME
+      label: Database Name
+      type: string
+      required: true
+      default: verboice
+
+    - variable: GUISSO_ENABLED
+      label: Enable Guisso for SSO
+      type: boolean
+      default: false
+      required: true
+    - variable: GUISSO_URL
+      label: GUISSO URL
+      type: string
+    - variable: GUISSO_CLIENT_ID
+      label: GUISSO client ID
+      type: string
+    - variable: GUISSO_CLIENT_SECRET
+      label: GUISSO client secret
+      type: password
+
+    - variable: VERBOICE_ASTERISK_AUTOCONFIG
+      label: Asterisk autoconfig mode
+      type: enum
+      default: rancher
+      options:
+        -
+        - rancher
+        - aws
+        - ifconfig.co
+
+    - variable: VOLUME_ASTERISK_CONFIG
+      label: Volume to store Asterisk configuration files for Verboice
+      type: string
+      default: verboice-asterisk-config
+    - variable: VOLUME_SOUNDS
+      label: Volume to store generated audio files
+      type: string
+      default: verboice-sounds
+    - variable: VOLUME_DATA
+      label: Volume to store generated data
+      type: string
+      default: verboice-data
+
+    - variable: INSTEDD_THEME
+      label: InSTEDD Theme base URL
+      type: string
+      required: true
+      default: https://a4b5cff76c528f65ea0a-27a040455636240d133755398736da07.ssl.cf2.rackcdn.com
