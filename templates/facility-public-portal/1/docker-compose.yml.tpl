@@ -12,7 +12,7 @@ services:
       DATABASE_URL: postgres://facilities@db/facilities
       {{- end }}
 
-      {{- if eq .Values.EXTERNAL_DATABASE "true" }}
+      {{- if eq .Values.EXTERNAL_ELASTICSEARCH "true" }}
       ELASTICSEARCH_URL: ${ELASTICSEARCH_URL}
       ELASTICSEARCH_INDEX: ${ELASTICSEARCH_INDEX}
       {{- else }}
