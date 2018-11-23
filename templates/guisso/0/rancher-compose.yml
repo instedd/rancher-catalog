@@ -85,3 +85,15 @@
       type: string
       required: true
       default: instedd.org
+
+    - variable: WEB_MEM_LIMIT
+      label: Memory limit (web process)
+      type: string
+      required: false
+      default: 512m
+
+    - variable: WEB_MEM_RESERVATION
+      label: Memory reservation (web process)
+      type: string
+      required: false
+      default: 256m
