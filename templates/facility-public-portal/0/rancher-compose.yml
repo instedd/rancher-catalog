@@ -103,3 +103,25 @@
     - variable: VOLUME_PG_DATA
       label: Internal Postgres Data Volume
       type: string
+
+    - variable: WEB_MEM_LIMIT
+      label: Memory limit (web process)
+      type: string
+      required: false
+      default: 512m
+    - variable: WEB_MEM_RESERVATION
+      label: Memory reservation (web process)
+      type: string
+      required: false
+      default: 256m
+
+    - variable: DB_MEM_LIMIT
+      label: Memory limit (db process)
+      type: string
+      required: false
+      default: 128m
+    - variable: DB_MEM_RESERVATION
+      label: Memory reservation (db process)
+      type: string
+      required: false
+      default: 32m
