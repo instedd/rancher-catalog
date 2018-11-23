@@ -37,6 +37,12 @@ services:
       - ${VOLUME_SETTINGS}:/app/config/settings
       - ${VOLUME_IMPORT_DATA}:/app/data
       - ${VOLUME_PICTURES}:/app/public/pictures
+    {{- if .Values.WEB_MEM_LIMIT }}
+    mem_limit: ${WEB_MEM_LIMIT}
+    {{- end }}
+    {{- if .Values.WEB_MEM_RESERVATION }}
+    mem_reservation: ${WEB_MEM_RESERVATION}
+    {{- end }}
 
   db-migrate:
     <<: *app
@@ -53,6 +59,12 @@ services:
       POSTGRES_USER: facilities
     volumes:
       - ${VOLUME_PG_DATA}:/var/lib/postgresql/data
+    {{- if .Values.DB_MEM_LIMIT }}
+    mem_limit: ${DB_MEM_LIMIT}
+    {{- end }}
+    {{- if .Values.DB_MEM_RESERVATION }}
+    mem_reservation: ${DB_MEM_RESERVATION}
+    {{- end }}
   {{- end }}
 
   {{- if eq .Values.EXTERNAL_ELASTICSEARCH "false" }}
