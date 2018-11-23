@@ -72,6 +72,12 @@ services:
     image: elasticsearch:2.4
     volumes:
       - ${VOLUME_ES_DATA}:/usr/share/elasticsearch/data
+    {{- if .Values.ES_MEM_LIMIT }}
+    mem_limit: ${ES_MEM_LIMIT}
+    {{- end }}
+    {{- if .Values.ES_MEM_RESERVATION }}
+    mem_reservation: ${ES_MEM_RESERVATION}
+    {{- end }}
   {{- end }}
 
 volumes:

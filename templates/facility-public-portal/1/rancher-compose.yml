@@ -131,3 +131,14 @@
       type: string
       required: false
       default: 32m
+
+    - variable: ES_MEM_LIMIT
+      label: Memory limit (elasticsearch process)
+      type: string
+      required: false
+      default: 512m
+    - variable: ES_MEM_RESERVATION
+      label: Memory reservation (elasticsearch process)
+      type: string
+      required: false
+      default: 256m
