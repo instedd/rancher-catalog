@@ -162,3 +162,8 @@
     - variable: VERBOICE_CHANNEL_UI
       label: Enable (true) or disable (false) embedded UI to create and edit channels in Verboice
       type: string
+
+    - variable: INTERCOM_APP_ID
+      label: Intercom App ID
+      type: string
+      required: false

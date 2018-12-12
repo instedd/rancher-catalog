@@ -38,6 +38,9 @@ services:
       SMTP_PORT: ${SMTP_PORT}
       SMTP_SERVER: ${SMTP_SERVER}
       SMTP_USER: ${SMTP_USER}
+      {{- if .Values.INTERCOM_APP_ID }}
+      INTERCOM_APP_ID: ${INTERCOM_APP_ID}
+      {{- end }}
 
       {{- if eq .Values.GUISSO_ENABLED "true" }}
       GUISSO_ENABLED: 'true'
