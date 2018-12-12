@@ -75,3 +75,7 @@
       type: string
       required: true
       default: https://a4b5cff76c528f65ea0a-27a040455636240d133755398736da07.ssl.cf2.rackcdn.com
+    - variable: INTERCOM_APP_ID
+      label: Intercom App ID
+      type: string
+      required: false

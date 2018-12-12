@@ -20,6 +20,9 @@ services:
       GUISSO_CLIENT_SECRET: ${GUISSO_CLIENT_SECRET}
       {{- end }}
       INSTEDD_THEME: ${INSTEDD_THEME}
+      {{- if .Values.INTERCOM_APP_ID }}
+      INTERCOM_APP_ID: ${INTERCOM_APP_ID}
+      {{- end }}
     volumes:
     - ${VOLUME_DATA}:/app/data
     labels:
