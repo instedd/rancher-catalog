@@ -40,6 +40,10 @@
       type: string
       default: facilities
 
+    - variable: ALLOWED_REQUEST_ORIGINS
+      label: Allowed request origins (for websocket connections)
+      type: string
+
     - variable: FAKE_USER_POSITION
       label: Use fake user position?
       type: string
