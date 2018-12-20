@@ -40,6 +40,12 @@
       type: string
       default: facilities
 
+    - variable: INPUT_DIR
+      label: Input directory (where the CSV files are stored)
+      type: string
+      required: true
+      default: data/input
+
     - variable: ALLOWED_REQUEST_ORIGINS
       label: Allowed request origins (for websocket connections)
       type: string
