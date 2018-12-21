@@ -106,3 +106,46 @@
       type: string
       required: false
 
+    - variable: RUNTIME_MEM_LIMIT
+      label: Memory limit (runtime process)
+      type: string
+      required: false
+      default: 512m
+    - variable: RUNTIME_MEM_RESERVATION
+      label: Memory reservation (runtime process)
+      type: string
+      required: false
+      default: 128m
+
+    - variable: UI_MEM_LIMIT
+      label: Memory limit (ui process)
+      type: string
+      required: false
+      default: 512m
+    - variable: UI_MEM_RESERVATION
+      label: Memory reservation (ui process)
+      type: string
+      required: false
+      default: 128m
+
+    - variable: UI_JOBS_MEM_LIMIT
+      label: Memory limit (ui jobs process)
+      type: string
+      required: false
+      default: 512m
+    - variable: UI_JOBS_MEM_RESERVATION
+      label: Memory reservation (ui jobs process)
+      type: string
+      required: false
+      default: 128m
+
+    - variable: REDIS_MEM_LIMIT
+      label: Memory limit (runtime process)
+      type: string
+      required: false
+      default: 64m
+    - variable: REDIS_MEM_RESERVATION
+      label: Memory reservation (runtime process)
+      type: string
+      required: false
+      default: 8m

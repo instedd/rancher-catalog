@@ -10,6 +10,12 @@ services:
       AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
     labels:
       io.rancher.container.pull_image: always
+    {{- if .Values.RUNTIME_MEM_LIMIT }}
+    mem_limit: ${RUNTIME_MEM_LIMIT}
+    {{- end }}
+    {{- if .Values.RUNTIME_MEM_RESERVATION }}
+    mem_reservation: ${RUNTIME_MEM_RESERVATION}
+    {{- end }}
   runtime-db-migrate:
     <<: *runtime
     command: mix ecto.migrate
@@ -37,11 +43,23 @@ services:
       SETTINGS__BACKEND__PUBLIC_CONTENT_URL: https://${HOSTNAME}/content
     labels:
       io.rancher.container.pull_image: always
+    {{- if .Values.UI_MEM_LIMIT }}
+    mem_limit: ${UI_MEM_LIMIT}
+    {{- end }}
+    {{- if .Values.UI_MEM_RESERVATION }}
+    mem_reservation: ${UI_MEM_RESERVATION}
+    {{- end }}
   ui-jobs:
     <<: *ui
     command:
       - ./bin/rake
       - jobs:work
+    {{- if .Values.UI_JOBS_MEM_LIMIT }}
+    mem_limit: ${UI_JOBS_MEM_LIMIT}
+    {{- end }}
+    {{- if .Values.UI_JOBS_MEM_RESERVATION }}
+    mem_reservation: ${UI_JOBS_MEM_RESERVATION}
+    {{- end }}
   ui-db-migrate:
     <<: *ui
     command:
@@ -55,3 +73,9 @@ services:
     image: redis:4
     labels:
       io.rancher.container.pull_image: always
+    {{- if .Values.REDIS_MEM_LIMIT }}
+    mem_limit: ${REDIS_MEM_LIMIT}
+    {{- end }}
+    {{- if .Values.REDIS_MEM_RESERVATION }}
+    mem_reservation: ${REDIS_MEM_RESERVATION}
+    {{- end }}
