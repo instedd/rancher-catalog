@@ -74,6 +74,12 @@
       required: false
       default: 256m
 
+    - variable: WEB_PUMA_FLAGS
+      label: Flags for Puma web server
+      type: string
+      required: true
+      default: "--preload -w 4"
+
     - variable: WORKER_MEM_LIMIT
       label: Memory limit (worker processes)
       type: string
@@ -84,8 +90,3 @@
       type: string
       required: false
       default: 128m
-
-    - variable: WEB_PUMA_FLAGS
-      label: Flags for Puma web server
-      required: true
-      default: "--preload -w 4"
