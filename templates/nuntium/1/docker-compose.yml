@@ -24,6 +24,12 @@ services:
 
   memcached:
     image: memcached:1.4.24
+    {{- if .Values.MEMCACHED_MEM_LIMIT }}
+    mem_limit: ${MEMCACHED_MEM_LIMIT}
+    {{- end }}
+    {{- if .Values.MEMCACHED_MEM_RESERVATION }}
+    mem_reservation: ${MEMCACHED_MEM_RESERVATION}
+    {{- end }}
 
   rabbitmq:
     image: rabbitmq:3.6
@@ -34,6 +40,12 @@ services:
       RABBITMQ_DEFAULT_USER: nuntium
       RABBITMQ_DEFAULT_PASS: nuntium
       RABBITMQ_DEFAULT_VHOST: /nuntium
+    {{- if .Values.RABBITMQ_MEM_LIMIT }}
+    mem_limit: ${RABBITMQ_MEM_LIMIT}
+    {{- end }}
+    {{- if .Values.RABBITMQ_MEM_RESERVATION }}
+    mem_reservation: ${RABBITMQ_MEM_RESERVATION}
+    {{- end }}
 
   workerfast:
     <<: *rails

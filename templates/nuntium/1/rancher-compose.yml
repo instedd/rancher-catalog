@@ -90,3 +90,25 @@
       type: string
       required: false
       default: 128m
+
+    - variable: MEMCACHED_MEM_LIMIT
+      label: Memory limit (memcached process)
+      type: string
+      required: false
+      default: 128m
+    - variable: MEMCACHED_MEM_RESERVATION
+      label: Memory reservation (memcached process)
+      type: string
+      required: false
+      default: 8m
+
+    - variable: RABBITMQ_MEM_LIMIT
+      label: Memory limit (rabbitmq process)
+      type: string
+      required: false
+      default: 256m
+    - variable: RABBITMQ_MEM_RESERVATION
+      label: Memory reservation (rabbitmq process)
+      type: string
+      required: false
+      default: 128m
