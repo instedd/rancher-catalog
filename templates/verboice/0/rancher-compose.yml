@@ -79,3 +79,36 @@
       label: Intercom App ID
       type: string
       required: false
+
+    - variable: WEB_MEM_LIMIT
+      label: Memory limit (web process)
+      type: string
+      required: false
+      default: 512m
+    - variable: WEB_MEM_RESERVATION
+      label: Memory reservation (web process)
+      type: string
+      required: false
+      default: 256m
+
+    - variable: BROKER_MEM_LIMIT
+      label: Memory limit (broker process)
+      type: string
+      required: false
+      default: 512m
+    - variable: BROKER_MEM_RESERVATION
+      label: Memory reservation (broker process)
+      type: string
+      required: false
+      default: 256m
+
+    - variable: ASTERISK_MEM_LIMIT
+      label: Memory limit (asterisk process)
+      type: string
+      required: false
+      default: 256m
+    - variable: ASTERISK_MEM_RESERVATION
+      label: Memory reservation (asterisk process)
+      type: string
+      required: false
+      default: 64m
