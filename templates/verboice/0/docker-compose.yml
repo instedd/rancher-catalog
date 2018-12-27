@@ -7,7 +7,7 @@ services:
       INPUT_PORT: '5038'
     labels:
       io.rancher.container.pull_image: always
-    mem_limit: 2m
+    mem_limit: 4m
     mem_reservation: 1m
   web:
     image: instedd/verboice:${VERBOICE_VERSION}
