@@ -84,3 +84,8 @@
       type: string
       required: false
       default: 128m
+
+    - variable: WEB_PUMA_FLAGS
+      label: Flags for Puma web server
+      required: true
+      default: "--preload -w 4"

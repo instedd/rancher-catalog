@@ -14,6 +14,7 @@ services:
       {{- end }}
       SCHEME: ${SCHEME}
       HOSTNAME: ${HOSTNAME}
+      WEB_PUMA_FLAGS: ${WEB_PUMA_FLAGS}
     {{- if .Values.WEB_MEM_LIMIT }}
     mem_limit: ${WEB_MEM_LIMIT}
     {{- end }}
