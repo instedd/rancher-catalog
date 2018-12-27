@@ -14,6 +14,12 @@ services:
       {{- end }}
       SCHEME: ${SCHEME}
       HOSTNAME: ${HOSTNAME}
+    {{- if .Values.WEB_MEM_LIMIT }}
+    mem_limit: ${WEB_MEM_LIMIT}
+    {{- end }}
+    {{- if .Values.WEB_MEM_RESERVATION }}
+    mem_reservation: ${WEB_MEM_RESERVATION}
+    {{- end }}
 
   memcached:
     image: memcached:1.4.24
@@ -31,25 +37,61 @@ services:
   workerfast:
     <<: *rails
     command: "bundle exec lib/services/generic_worker_daemon.rb production fast 1000"
+    {{- if .Values.WORKER_MEM_LIMIT }}
+    mem_limit: ${WORKER_MEM_LIMIT}
+    {{- end }}
+    {{- if .Values.WORKER_MEM_RESERVATION }}
+    mem_reservation: ${WORKER_MEM_RESERVATION}
+    {{- end }}
 
   workerslow:
     <<: *rails
     command: "bundle exec lib/services/generic_worker_daemon.rb production slow 2000"
+    {{- if .Values.WORKER_MEM_LIMIT }}
+    mem_limit: ${WORKER_MEM_LIMIT}
+    {{- end }}
+    {{- if .Values.WORKER_MEM_RESERVATION }}
+    mem_reservation: ${WORKER_MEM_RESERVATION}
+    {{- end }}
 
   cron:
     <<: *rails
     command: "bundle exec lib/services/cron_daemon.rb"
+    {{- if .Values.WORKER_MEM_LIMIT }}
+    mem_limit: ${WORKER_MEM_LIMIT}
+    {{- end }}
+    {{- if .Values.WORKER_MEM_RESERVATION }}
+    mem_reservation: ${WORKER_MEM_RESERVATION}
+    {{- end }}
 
   sched:
     <<: *rails
     command: "bundle exec lib/services/scheduled_jobs_service_daemon.rb"
+    {{- if .Values.WORKER_MEM_LIMIT }}
+    mem_limit: ${WORKER_MEM_LIMIT}
+    {{- end }}
+    {{- if .Values.WORKER_MEM_RESERVATION }}
+    mem_reservation: ${WORKER_MEM_RESERVATION}
+    {{- end }}
 
   smpp:
     <<: *rails
     command: "bundle exec lib/services/smpp_service_daemon.rb"
+    {{- if .Values.WORKER_MEM_LIMIT }}
+    mem_limit: ${WORKER_MEM_LIMIT}
+    {{- end }}
+    {{- if .Values.WORKER_MEM_RESERVATION }}
+    mem_reservation: ${WORKER_MEM_RESERVATION}
+    {{- end }}
 
   db-migrate:
     <<: *rails
+    {{- if .Values.WORKER_MEM_LIMIT }}
+    mem_limit: ${WORKER_MEM_LIMIT}
+    {{- end }}
+    {{- if .Values.WORKER_MEM_RESERVATION }}
+    mem_reservation: ${WORKER_MEM_RESERVATION}
+    {{- end }}
     command: /app/migrate
     labels:
       io.rancher.container.start_once: "true"
