@@ -167,3 +167,14 @@
       label: Intercom App ID
       type: string
       required: false
+
+    - variable: APP_MEM_LIMIT
+      label: Memory limit (app process)
+      type: string
+      required: false
+      default: 512m
+    - variable: APP_MEM_RESERVATION
+      label: Memory reservation (app process)
+      type: string
+      required: false
+      default: 256m

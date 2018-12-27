@@ -9,12 +9,24 @@ services:
       DATABASE_PASS: ${DATABASE_PASS}
       DATABASE_USER: ${DATABASE_USER}
       DISABLE_REPO_TIMEOUT: "true"
+    {{- if .Values.APP_MEM_LIMIT }}
+    mem_limit: ${APP_MEM_LIMIT}
+    {{- end }}
+    {{- if .Values.APP_MEM_RESERVATION }}
+    mem_reservation: ${APP_MEM_RESERVATION}
+    {{- end }}
     labels:
       io.rancher.container.start_once: "true"
       io.rancher.container.pull_image: always
 
   app:
     image: instedd/ask:${SURVEDA_VERSION}
+    {{- if .Values.APP_MEM_LIMIT }}
+    mem_limit: ${APP_MEM_LIMIT}
+    {{- end }}
+    {{- if .Values.APP_MEM_RESERVATION }}
+    mem_reservation: ${APP_MEM_RESERVATION}
+    {{- end }}
     environment:
       BROKER_BATCH_SIZE: ${BROKER_BATCH_SIZE}
       DATABASE_HOST: ${DATABASE_HOST}
