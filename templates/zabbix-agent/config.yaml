@@ -1,0 +1,8 @@
+name: Zabbix Agent
+description: |
+  Zabbix Agent
+version: '0.1'
+category: Monitoring
+maintainer: Juan Wajnerman <waj@manas.tech>
+license: The MIT License
+projectURL: https://www.zabbix.com/

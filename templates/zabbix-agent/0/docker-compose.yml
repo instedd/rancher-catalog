@@ -1,0 +1,15 @@
+version: '2'
+services:
+  agent:
+    privileged: true
+    image: zabbix/zabbix-agent
+    environment:
+      ZBX_SERVER_HOST: ${ZBX_SERVER_HOST}
+      ZBX_METADATA: docker ${ZBX_METADATA}
+    network_mode: host
+    volumes:
+    - /:/mnt/rootfs
+    pid: host
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.scheduler.global: 'true'
