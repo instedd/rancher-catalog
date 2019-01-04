@@ -11,3 +11,8 @@
     - variable: ZBX_METADATA
       label: Zabbix Metadata
       type: string
+    - variable: RANCHER_AGENT_HOSTNAME
+      label: Rancher agent host name
+      required: true
+      type: string
+      default: rancher-agent

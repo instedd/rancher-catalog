@@ -13,3 +13,15 @@ services:
     labels:
       io.rancher.container.pull_image: always
       io.rancher.scheduler.global: 'true'
+  rancher-agent:
+    image: manastech/rancher-zabbix-agent
+    environment:
+      ZBX_SERVER_HOST: ${ZBX_SERVER_HOST}
+      ZBX_HOSTNAME: ${RANCHER_AGENT_HOSTNAME}
+      ZBX_PASSIVE_ALLOW: 'false'
+      ZBX_STARTAGENTS: 0
+      ZBX_METADATA: rancher ${ZBX_METADATA}
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.container.agent.role: environment
+      io.rancher.container.create_agent: 'true'
