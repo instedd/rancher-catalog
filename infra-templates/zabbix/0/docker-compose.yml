@@ -21,6 +21,7 @@ services:
       ZBX_PASSIVE_ALLOW: 'false'
       ZBX_STARTAGENTS: 0
       ZBX_METADATA: rancher ${ZBX_METADATA}
+      HOST_GROUP: ${HOST_GROUP}
     labels:
       io.rancher.container.pull_image: always
       io.rancher.container.agent.role: environment

@@ -16,3 +16,7 @@
       required: true
       type: string
       default: rancher-agent
+    - variable: HOST_GROUP
+      label: Host group where to place discovered proxy hosts
+      required: true
+      type: string
