@@ -1,0 +1,7 @@
+name: Logging Agent
+description: |
+  Forwards all container logs to Elasticsearch
+version: '0.1'
+category: Logging
+maintainer: Juan Wajnerman <waj@manas.tech>
+license: The MIT License

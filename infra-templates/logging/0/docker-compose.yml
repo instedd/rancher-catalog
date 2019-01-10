@@ -1,0 +1,27 @@
+version: '2'
+services:
+  curator:
+    image: instedd/filebeat-curator
+    environment:
+      ES_HOST: ${ES_HOST}
+      DAYS: ${DAYS}
+    labels:
+      io.rancher.container.start_once: 'true'
+      io.rancher.container.pull_image: always
+      cron.schedule: '@daily'
+  filebeat:
+    image: instedd/filebeat-docker
+    environment:
+      ELASTICSEARCH_URL: https://${ES_HOST}:443
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    - /var/lib/docker/containers:/var/lib/docker/containers
+    - filebeat_data:/usr/share/filebeat/data
+    mem_reservation: 128m
+    mem_limit: 256m
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.scheduler.global: 'true'
+volumes:
+  filebeat_data:
+    per_container: true

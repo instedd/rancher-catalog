@@ -1,0 +1,14 @@
+.catalog:
+  name: Logging Agent
+  version: '0.1'
+  description: Logging Agent
+  minimum_rancher_version: v1.5.0
+  questions:
+    - variable: ES_HOST
+      label: Elasticsearch Host
+      required: true
+      type: string
+    - variable: DAYS
+      label: How many days to keep the logs
+      type: int
+      default: 30
