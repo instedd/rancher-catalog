@@ -9,6 +9,7 @@ services:
     network_mode: host
     volumes:
     - /:/mnt/rootfs
+    - /var/run/docker.sock:/var/run/docker.sock
     pid: host
     labels:
       io.rancher.container.pull_image: always
