@@ -2,7 +2,7 @@ version: '2'
 services:
   agent:
     privileged: true
-    image: zabbix/zabbix-agent
+    image: manastech/rancher-zabbix-agent
     environment:
       ZBX_SERVER_HOST: ${ZBX_SERVER_HOST}
       ZBX_METADATA: docker ${ZBX_METADATA}
