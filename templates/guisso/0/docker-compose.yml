@@ -8,6 +8,7 @@ services:
     - /app/migrate
     labels:
       io.rancher.container.start_once: 'true'
+      io.rancher.container.pull_image: always
   web:
     image: instedd/guisso:${GUISSO_VERSION}
     {{- if .Values.WEB_MEM_LIMIT }}
@@ -16,6 +17,8 @@ services:
     {{- if .Values.WEB_MEM_RESERVATION }}
     mem_reservation: ${WEB_MEM_RESERVATION}
     {{- end }}
+    labels:
+      io.rancher.container.pull_image: always
     environment:
       DATABASE_URL: ${DATABASE_TYPE}://${DATABASE_USER}:${DATABASE_PASS}@${DATABASE_HOST}/${DATABASE_NAME}
       RAILS_CONFIG__action_mailer__smtp_settings__user_name: ${SMTP_USER}
