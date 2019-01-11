@@ -52,6 +52,11 @@
       label: GUISSO client secret
       type: password
 
+    - variable: INTERCOM_APP_ID
+      label: Intercom App ID
+      type: string
+      required: false
+
     - variable: RABBITMQ_HOSTNAME
       label: RabbitMQ container host name
       required: true
