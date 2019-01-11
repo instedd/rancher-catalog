@@ -86,6 +86,11 @@
       required: true
       default: instedd.org
 
+    - variable: INTERCOM_APP_ID
+      label: Intercom App ID
+      type: string
+      required: false
+
     - variable: WEB_MEM_LIMIT
       label: Memory limit (web process)
       type: string

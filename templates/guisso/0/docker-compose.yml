@@ -34,3 +34,6 @@ services:
       GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
       GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
       {{- end }}
+      {{- if .Values.INTERCOM_APP_ID }}
+      INTERCOM_APP_ID: ${INTERCOM_APP_ID}
+      {{- end }}
