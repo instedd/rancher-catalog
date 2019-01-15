@@ -96,6 +96,11 @@
       label: Nuntium Password
       type: string
 
+    - variable: INTERCOM_APP_ID
+      label: Intercom App ID
+      type: string
+      required: false
+
     - variable: VOLUME_DRIVER
       label: Volume Driver
       type: string
