@@ -40,29 +40,34 @@ services:
     volumes:
       - ${VOLUME_UPLOADS}:/app/public/uploads
       - ${VOLUME_IMPORT_WIZARD}:/app/tmp/import_wizard
+    mem_limit: ${WEB_MEM_LIMIT}
+    mem_reservation: ${WEB_MEM_RESERVATION}
 
   redis:
     image: redis:4.0-alpine
     volumes:
       - ${VOLUME_REDIS}:/data
+    mem_limit: ${REDIS_MEM_LIMIT}
+    mem_reservation: ${REDIS_MEM_RESERVATION}
 
   resque:
     <<: *app
     command: bundle exec rake resque:work TERM_CHILD=1 FORK_PER_JOB=false
+    mem_limit: ${RESQUE_MEM_LIMIT}
+    mem_reservation: ${RESQUE_MEM_RESERVATION}
 
   resque-scheduler:
     <<: *app
     command: bundle exec rake resque:scheduler
+    mem_limit: ${RESQUE_SCHEDULER_MEM_LIMIT}
+    mem_reservation: ${RESQUE_SCHEDULER_MEM_RESERVATION}
 
   db-migrate:
-    image: instedd/resourcemap:${RESMAP_VERSION}
+    <<: *app
+    command: bundle exec rake db:migrate
     labels:
       io.rancher.container.pull_image: always
       io.rancher.container.start_once: "true"
-    command: bundle exec rake db:migrate
-    environment:
-      DATABASE_URL: mysql2://${DATABASE_USER}:${DATABASE_PASS}@${DATABASE_HOST}/${DATABASE_NAME}
-      REDIS_URL: 'redis://redis:6379'
 
 volumes:
   {{ .Values.VOLUME_REDIS }}:

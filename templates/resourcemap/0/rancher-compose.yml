@@ -118,3 +118,47 @@
       label: Import Wizard Temp Volume
       type: string
       required: true
+
+    - variable: WEB_MEM_LIMIT
+      label: Memory limit (web process)
+      type: string
+      required: true
+      default: 512m
+    - variable: WEB_MEM_RESERVATION
+      label: Memory reservation (web process)
+      type: string
+      required: true
+      default: 192m
+
+    - variable: REDIS_MEM_LIMIT
+      label: Memory limit (redis process)
+      type: string
+      required: true
+      default: 128m
+    - variable: REDIS_MEM_RESERVATION
+      label: Memory reservation (redis process)
+      type: string
+      required: true
+      default: 16m
+
+    - variable: RESQUE_MEM_LIMIT
+      label: Memory limit (resque process)
+      type: string
+      required: true
+      default: 512m
+    - variable: RESQUE_MEM_RESERVATION
+      label: Memory reservation (resque process)
+      type: string
+      required: true
+      default: 192m
+
+    - variable: RESQUE_SCHEDULER_MEM_LIMIT
+      label: Memory limit (resque scheduler process)
+      type: string
+      required: true
+      default: 512m
+    - variable: RESQUE_SCHEDULER_MEM_RESERVATION
+      label: Memory reservation (resque scheduler process)
+      type: string
+      required: true
+      default: 128m
