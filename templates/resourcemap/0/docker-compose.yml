@@ -48,18 +48,18 @@ services:
 
   resque:
     <<: *app
-    command: rake resque:work TERM_CHILD=1 FORK_PER_JOB=false
+    command: bundle exec rake resque:work TERM_CHILD=1 FORK_PER_JOB=false
 
   resque-scheduler:
     <<: *app
-    command: rake resque:scheduler
+    command: bundle exec rake resque:scheduler
 
   db-migrate:
     image: instedd/resourcemap:${RESMAP_VERSION}
     labels:
       io.rancher.container.pull_image: always
       io.rancher.container.start_once: "true"
-    command: rake db:migrate
+    command: bundle exec rake db:migrate
     environment:
       DATABASE_URL: mysql2://${DATABASE_USER}:${DATABASE_PASS}@${DATABASE_HOST}/${DATABASE_NAME}
       REDIS_URL: 'redis://redis:6379'
