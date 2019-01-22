@@ -32,6 +32,6 @@ services:
     <<: *app
     command: bundle exec rake jobs:work
 
-  hub_import:
+  hub-import:
     <<: *app
     command: bundle exec rake hub:import
