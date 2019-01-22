@@ -1,0 +1,72 @@
+.catalog:
+  name: Pollit
+  version: '0.1'
+  description: InSTEDD Pollit
+  minimum_rancher_version: v1.5.0
+  questions:
+    - variable: POLLIT_VERSION
+      label: Pollit version
+      required: true
+      type: string
+
+    - variable: SECRET_TOKEN
+      label: Secret Token (used to sign/encrypt session tokens)
+      type: password
+      required: true
+
+    - variable: DATABASE_HOST
+      label: Database Host
+      required: true
+      type: string
+    - variable: DATABASE_USER
+      label: Database User
+      required: true
+      type: string
+    - variable: DATABASE_PASS
+      label: Database Password
+      type: password
+    - variable: DATABASE_NAME
+      label: Database Name
+      type: string
+      required: true
+
+    - variable: GUISSO_ENABLED
+      label: Use GUISSO
+      required: true
+      type: boolean
+      default: true
+    - variable: GUISSO_URL
+      label: GUISSO URL
+      type: string
+      default: https://login.instedd.org
+    - variable: GUISSO_CLIENT_ID
+      label: GUISSO Client ID
+      type: string
+    - variable: GUISSO_CLIENT_SECRET
+      label: GUISSO Client Secret
+      type: password
+
+    - variable: NUNTIUM_URL
+      label: Nuntium URL
+      required: true
+      type: string
+    - variable: NUNTIUM_ACCOUNT
+      label: Nuntium Account
+      required: true
+      type: string
+    - variable: NUNTIUM_PASSWORD
+      label: Nuntium Password
+      required: true
+      type: password
+    - variable: NUNTIUM_APPLICATION
+      label: Nuntium Application
+      required: true
+      type: string
+    - variable: NUNTIUM_AT_POST_USER
+      label: Username to validate Nuntium callbacks
+      required: true
+      type: string
+    - variable: NUNTIUM_AT_POST_PASS
+      label: Password to validate Nuntium callbacks
+      required: true
+      type: password

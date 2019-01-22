@@ -1,0 +1,37 @@
+version: '2'
+
+services:
+  web: &app
+    image: instedd/pollit:${POLLIT_VERSION}
+    environment:
+      DATABASE_URL: mysql2://${DATABASE_USER}:${DATABASE_PASS}@${DATABASE_HOST}/${DATABASE_NAME}
+      SETTINGS__SECRET_TOKEN: ${SECRET_TOKEN}
+      GUISSO_ENABLED: ${GUISSO_ENABLED}
+      {{- if eq .Values.GUISSO_ENABLED "true" }}
+      GUISSO_URL: ${GUISSO_URL}
+      GUISSO_CLIENT_ID: ${GUISSO_CLIENT_ID}
+      GUISSO_CLIENT_SECRET: ${GUISSO_CLIENT_SECRET}
+      {{- end }}
+      SETTINGS__NUNTIUM__URL: ${NUNTIUM_URL}
+      SETTINGS__NUNTIUM__ACCOUNT: ${NUNTIUM_ACCOUNT}
+      SETTINGS__NUNTIUM__PASSWORD: ${NUNTIUM_PASSWORD}
+      SETTINGS__NUNTIUM__APPLICATION: ${NUNTIUM_APPLICATION}
+      SETTINGS__NUNTIUM__AT_POST_USER: ${NUNTIUM_AT_POST_USER}
+      SETTINGS__NUNTIUM__AT_POST_PASS: ${NUNTIUM_AT_POST_PASS}
+    labels:
+      io.rancher.container.pull_image: always
+
+  db-migrate:
+    <<: *app
+    command: bundle exec rake db:migrate
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.container.start_once: "true"
+
+  jobs:
+    <<: *app
+    command: bundle exec rake jobs:work
+
+  hub_import:
+    <<: *app
+    command: bundle exec rake hub:import
