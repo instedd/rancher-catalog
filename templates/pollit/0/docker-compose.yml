@@ -20,6 +20,8 @@ services:
       SETTINGS__NUNTIUM__AT_POST_PASS: ${NUNTIUM_AT_POST_PASS}
     labels:
       io.rancher.container.pull_image: always
+    mem_limit: ${WEB_MEM_LIMIT}
+    mem_reservation: ${WEB_MEM_RESERVATION}
 
   db-migrate:
     <<: *app
@@ -31,7 +33,11 @@ services:
   jobs:
     <<: *app
     command: bundle exec rake jobs:work
+    mem_limit: ${JOBS_MEM_LIMIT}
+    mem_reservation: ${JOBS_MEM_RESERVATION}
 
   hub-import:
     <<: *app
     command: bundle exec rake hub:import
+    mem_limit: ${HUB_IMPORT_MEM_LIMIT}
+    mem_reservation: ${HUB_IMPORT_MEM_RESERVATION}

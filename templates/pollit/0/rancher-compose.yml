@@ -70,3 +70,34 @@
       label: Password to validate Nuntium callbacks
       required: true
       type: password
+
+    - variable: WEB_MEM_LIMIT
+      label: Memory limit (web process)
+      type: string
+      required: true
+      default: 256m
+    - variable: WEB_MEM_RESERVATION
+      label: Memory reservation (web process)
+      type: string
+      required: true
+      default: 128m
+    - variable: JOBS_MEM_LIMIT
+      label: Memory limit (jobs process)
+      type: string
+      required: true
+      default: 256m
+    - variable: JOBS_MEM_RESERVATION
+      label: Memory reservation (jobs process)
+      type: string
+      required: true
+      default: 128m
+    - variable: HUB_IMPORT_MEM_LIMIT
+      label: Memory limit (hub import process)
+      type: string
+      required: true
+      default: 256m
+    - variable: HUB_IMPORT_MEM_RESERVATION
+      label: Memory reservation (hub import process)
+      type: string
+      required: true
+      default: 128m
