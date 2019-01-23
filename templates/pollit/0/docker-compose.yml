@@ -11,6 +11,9 @@ services:
       GUISSO_URL: ${GUISSO_URL}
       GUISSO_CLIENT_ID: ${GUISSO_CLIENT_ID}
       GUISSO_CLIENT_SECRET: ${GUISSO_CLIENT_SECRET}
+      {{- if eq .Values.GUISSO_MEMCACHED_OPENID_STORE "true" }}
+      GUISSO_OPENID_STORE: memcached://memcached
+      {{- end }}
       {{- end }}
       SETTINGS__NUNTIUM__URL: ${NUNTIUM_URL}
       SETTINGS__NUNTIUM__ACCOUNT: ${NUNTIUM_ACCOUNT}
@@ -22,6 +25,11 @@ services:
       io.rancher.container.pull_image: always
     mem_limit: ${WEB_MEM_LIMIT}
     mem_reservation: ${WEB_MEM_RESERVATION}
+
+  {{- if and (eq .Values.GUISSO_ENABLED "true") (eq .Values.GUISSO_MEMCACHED_OPENID_STORE "true")}}
+  memcached:
+    image: memcached:1.5
+  {{- end }}
 
   db-migrate:
     <<: *app

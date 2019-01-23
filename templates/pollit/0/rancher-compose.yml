@@ -45,6 +45,10 @@
     - variable: GUISSO_CLIENT_SECRET
       label: GUISSO Client Secret
       type: password
+    - variable: GUISSO_MEMCACHED_OPENID_STORE
+      label: Use memcached for GUISSO OpenID store (recommended)
+      type: boolean
+      default: true
 
     - variable: NUNTIUM_URL
       label: Nuntium URL
