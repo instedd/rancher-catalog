@@ -21,6 +21,9 @@ services:
       SETTINGS__NUNTIUM__APPLICATION: ${NUNTIUM_APPLICATION}
       SETTINGS__NUNTIUM__AT_POST_USER: ${NUNTIUM_AT_POST_USER}
       SETTINGS__NUNTIUM__AT_POST_PASS: ${NUNTIUM_AT_POST_PASS}
+      {{- if .Values.INTERCOM_APP_ID }}
+      INTERCOM_APP_ID: ${INTERCOM_APP_ID}
+      {{- end }}
     labels:
       io.rancher.container.pull_image: always
     mem_limit: ${WEB_MEM_LIMIT}
