@@ -91,6 +91,12 @@
       type: string
       required: false
 
+    - variable: USE_MEMCACHED_FOR_OPENID_STORE
+      label: Use memcached for OpenID store (recommended)
+      type: boolean
+      default: true
+      required: true
+
     - variable: WEB_MEM_LIMIT
       label: Memory limit (web process)
       type: string
