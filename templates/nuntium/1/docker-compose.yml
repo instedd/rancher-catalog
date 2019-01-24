@@ -24,6 +24,14 @@ services:
     {{- if .Values.WEB_MEM_RESERVATION }}
     mem_reservation: ${WEB_MEM_RESERVATION}
     {{- end }}
+    {{- if .Values.TWITTER_SECRET }}
+    secrets:
+    - mode: '0444'
+      uid: '0'
+      gid: '0'
+      source: ${TWITTER_SECRET}
+      target: twitter_oauth_consumer.yml
+    {{- end }}
 
   memcached:
     image: memcached:1.4.24

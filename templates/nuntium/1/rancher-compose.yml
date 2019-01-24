@@ -74,6 +74,11 @@
       required: false
       default: "--preload -w 4"
 
+    - variable: TWITTER_SECRET
+      label: Secret store with YAML configuration for Twitter
+      type: string
+      required: false
+
     - variable: WEB_MEM_LIMIT
       label: Memory limit (web process)
       type: string
