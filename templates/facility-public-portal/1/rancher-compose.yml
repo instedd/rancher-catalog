@@ -124,7 +124,10 @@
       type: string
 
     - variable: PRIMARY_COLOR
-      label: Primary color override (optional)
+      label: Primary color override
+      type: string
+    - variable: TOPNAV_BACKGROUND_COLOR
+      labels: Navigation bar background color override
       type: string
 
     - variable: WEB_MEM_LIMIT

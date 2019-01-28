@@ -35,9 +35,8 @@ services:
       SETTINGS__SMTP_SETTINGS__PASSWORD: ${SMTP_PASS}
       SETTINGS__SMTP_SETTINGS__PORT: ${SMTP_PORT}
       SETTINGS__SMTP_SETTINGS__USER_NAME: ${SMTP_USER}
-      {{- if .Values.PRIMARY_COLOR }}
       PRIMARY_COLOR: ${PRIMARY_COLOR}
-      {{- end }}
+      TOPNAV_BACKGROUND_COLOR: ${TOPNAV_BACKGROUND_COLOR}
     volumes:
       - ${VOLUME_SETTINGS}:/app/config/settings
       - ${VOLUME_IMPORT_DATA}:/app/data
