@@ -109,7 +109,7 @@ volumes:
     external: true
   {{- end }}
   {{- if .Values.VOLUME_PUBLIC_OVERRIDE }}
-  {{ .Values.VOLUME_PUBLIC_OVERRIDE }}
+  {{ .Values.VOLUME_PUBLIC_OVERRIDE }}:
     driver: ${VOLUME_DRIVER}
     external: true
   {{- end }}
