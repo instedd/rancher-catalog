@@ -35,10 +35,16 @@ services:
       SETTINGS__SMTP_SETTINGS__PASSWORD: ${SMTP_PASS}
       SETTINGS__SMTP_SETTINGS__PORT: ${SMTP_PORT}
       SETTINGS__SMTP_SETTINGS__USER_NAME: ${SMTP_USER}
+      {{- if .Values.PRIMARY_COLOR }}
+      PRIMARY_COLOR: ${PRIMARY_COLOR}
+      {{- end }}
     volumes:
       - ${VOLUME_SETTINGS}:/app/config/settings
       - ${VOLUME_IMPORT_DATA}:/app/data
       - ${VOLUME_PICTURES}:/app/public/pictures
+      {{- if .Values.VOLUME_PUBLIC_OVERRIDE }}
+      - ${VOLUME_PUBLIC_OVERRIDE}:/app/public_override
+      {{- end }}
     {{- if .Values.WEB_MEM_LIMIT }}
     mem_limit: ${WEB_MEM_LIMIT}
     {{- end }}
@@ -99,6 +105,11 @@ volumes:
   {{- end }}
   {{- if eq .Values.EXTERNAL_ELASTICSEARCH "false" }}
   {{ .Values.VOLUME_ES_DATA }}:
+    driver: ${VOLUME_DRIVER}
+    external: true
+  {{- end }}
+  {{- if .Values.VOLUME_PUBLIC_OVERRIDE }}
+  {{ .Values.VOLUME_PUBLIC_OVERRIDE }}
     driver: ${VOLUME_DRIVER}
     external: true
   {{- end }}

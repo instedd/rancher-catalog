@@ -119,6 +119,13 @@
     - variable: VOLUME_ES_DATA
       label: Internal Elasticsearch Data Volume
       type: string
+    - variable: VOLUME_PUBLIC_OVERRIDE
+      label: Volume with files to override public files
+      type: string
+
+    - variable: PRIMARY_COLOR
+      label: Primary color override (optional)
+      type: string
 
     - variable: WEB_MEM_LIMIT
       label: Memory limit (web process)
