@@ -1,0 +1,28 @@
+.catalog:
+  name: Adminer
+  version: '0.1'
+  description: Adminer
+  minimum_rancher_version: v1.5.0
+  questions:
+    - variable: GITHUB_ORG
+      label: GitHub Organization
+      required: true
+      type: string
+    - variable: GITHUB_TEAM
+      label: GitHub Team
+      description: The team within the organization that will have access to Adminer
+      required: true
+      type: string
+    - variable: COOKIE_SECRET
+      label: Cookie Secret
+      description: The seed string for secure cookies
+      required: true
+      type: password
+    - variable: GITHUB_CLIENT_ID
+      label: GitHub Client ID
+      required: true
+      type: string
+    - variable: GITHUB_CLIENT_SECRET
+      label: GitHub Client Secret
+      required: true
+      type: string
