@@ -11,6 +11,7 @@ services:
       GUISSO_URL: ${GUISSO_URL}
       GUISSO_CLIENT_ID: ${GUISSO_CLIENT_ID}
       GUISSO_CLIENT_SECRET: ${GUISSO_CLIENT_SECRET}
+      GUISSO_OPENID_STORE: memcached://memcached
       {{- end }}
       SCHEME: ${SCHEME}
       HOSTNAME: ${HOSTNAME}
