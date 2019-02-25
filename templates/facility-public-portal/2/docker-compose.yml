@@ -57,8 +57,7 @@ services:
       io.rancher.container.pull_image: always
       io.rancher.container.start_once: "true"
     command: rake db:migrate
-    mem_limit:
-    mem_reservation:
+    mem_reservation: 4m
 
   {{- if eq .Values.EXTERNAL_DATABASE "false" }}
   db:
