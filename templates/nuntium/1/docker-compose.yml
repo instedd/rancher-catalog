@@ -40,6 +40,8 @@ services:
       source: ${TWITTER_SECRET}
       target: twitter_oauth_consumer.yml
     {{- end }}
+    labels:
+      io.rancher.container.pull_image: always
 
   memcached:
     image: memcached:1.4.24
@@ -127,3 +129,4 @@ services:
     command: /app/migrate
     labels:
       io.rancher.container.start_once: "true"
+      io.rancher.container.pull_image: always
