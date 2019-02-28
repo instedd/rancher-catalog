@@ -78,6 +78,29 @@
       label: Secret store with YAML configuration for Twitter
       type: string
       required: false
+    
+    - variable: SMTP_HOST
+      label: SMTP Host
+      required: false
+      type: string
+      default: email-smtp.us-east-1.amazonaws.com
+    - variable: SMTP_USER
+      label: SMTP User
+      required: false
+      type: string
+    - variable: SMTP_PASS
+      label: SMTP Password
+      type: password
+    - variable: SMTP_PORT
+      label: SMTP Port
+      type: int
+      required: false
+      default: 587
+    - variable: EMAIL_SENDER
+      label: Email sender for notifications and alerts
+      required: true
+      type: string
+      default: nuntium@instedd.org
 
     - variable: WEB_MEM_LIMIT
       label: Memory limit (web process)
