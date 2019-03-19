@@ -55,6 +55,10 @@
       type: string
       default: 1
 
+    - variable: DEFAULT_LOCALE
+      label: Default locale
+      type: string
+
     - variable: SECRET_KEY_BASE
       label: Secret Key Base (used to sign/encrypt session tokens)
       type: password

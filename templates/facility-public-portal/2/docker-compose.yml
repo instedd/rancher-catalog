@@ -26,6 +26,10 @@ services:
 
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
 
+      {{- if .Values.DEFAULT_LOCALE }}
+      SETTINGS__DEFAULT_LOCALE: ${DEFAULT_LOCALE}
+      {{- end }}
+
       SETTINGS__ADMIN_USER: ${ADMIN_USER}
       SETTINGS__ADMIN_PASS: ${ADMIN_PASS}
 
