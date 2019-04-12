@@ -12,3 +12,8 @@
       label: How many days to keep the logs
       type: int
       default: 30
+    - variable: TAIL_FILES
+      label: Tail Files
+      description: Starts reading new files at the end of each file. Set to false after first run to avoid skipping logs.
+      type: boolean
+      default: true

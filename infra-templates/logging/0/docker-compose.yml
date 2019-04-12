@@ -13,6 +13,7 @@ services:
     image: instedd/filebeat-docker
     environment:
       ELASTICSEARCH_URL: https://${ES_HOST}:443
+      TAIL_FILES: ${TAIL_FILES}
     volumes:
     - /var/run/docker.sock:/var/run/docker.sock
     - /var/lib/docker/containers:/var/lib/docker/containers
