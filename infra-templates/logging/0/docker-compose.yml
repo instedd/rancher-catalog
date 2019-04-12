@@ -23,6 +23,24 @@ services:
     labels:
       io.rancher.container.pull_image: always
       io.rancher.scheduler.global: 'true'
+  oauth2-proxy:
+    image: a5huynh/oauth2_proxy
+    mem_reservation: 4m
+    mem_limit: 16m
+    environment:
+      OAUTH2_PROXY_CLIENT_ID: ${OAUTH2_PROXY_CLIENT_ID}
+      OAUTH2_PROXY_CLIENT_SECRET: ${OAUTH2_PROXY_CLIENT_SECRET}
+      OAUTH2_PROXY_COOKIE_SECRET: ${OAUTH2_PROXY_COOKIE_SECRET}
+    command:
+    - --provider=github
+    - --email-domain=*
+    - --upstream=https://${ES_HOST}
+    - --http-address=http://0.0.0.0:80
+    - --pass-basic-auth=false
+    - --github-org=${OAUTH2_PROXY_GITHUB_ORG}
+    - --github-team=${OAUTH2_PROXY_GITHUB_TEAM}
+    labels:
+      io.rancher.container.pull_image: always
 volumes:
   filebeat_data:
     per_container: true

@@ -17,3 +17,29 @@
       description: Starts reading new files at the end of each file. Set to false after first run to avoid skipping logs.
       type: boolean
       default: true
+
+    - variable: OAUTH2_PROXY_CLIENT_ID
+      label: OAuth2 Proxy Client ID
+      description: Client ID of the OAuth2 Application in GitHub
+      required: true
+      type: string
+    - variable: OAUTH2_PROXY_CLIENT_SECRET
+      label: OAuth2 Proxy Client Secret
+      description: Client Secret of the OAuth2 Application in GitHub
+      required: true
+      type: string
+    - variable: OAUTH2_PROXY_COOKIE_SECRET
+      label: OAuth2 Proxy Cookie Secret
+      description: Secret used to encrypt cookies
+      required: true
+      type: password
+    - variable: OAUTH2_PROXY_GITHUB_ORG
+      label: GitHub Organization
+      description: GitHub Organization to give access
+      required: true
+      type: string
+    - variable: OAUTH2_PROXY_GITHUB_TEAM
+      label: GitHub Team
+      description: GitHub Team to give access
+      required: true
+      type: string
