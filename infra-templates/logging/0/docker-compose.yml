@@ -41,6 +41,7 @@ services:
     - --github-team=${OAUTH2_PROXY_GITHUB_TEAM}
     labels:
       io.rancher.container.pull_image: always
+      logging-proxy: {{ .Stack.Name }}
 volumes:
   filebeat_data:
     per_container: true
