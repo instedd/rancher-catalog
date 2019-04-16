@@ -21,6 +21,12 @@ services:
       GUISSO_CLIENT_ID: ${GUISSO_CLIENT_ID}
       GUISSO_CLIENT_SECRET: ${GUISSO_CLIENT_SECRET}
       {{- end }}
+      {{- if .Values.NUNTIUM_HOST }}
+      NUNTIUM_HOST: ${NUNTIUM_HOST}
+      NUNTIUM_ACCOUNT: ${NUNTIUM_ACCOUNT}
+      NUNTIUM_APP: ${NUNTIUM_APP}
+      NUNTIUM_APP_PASSWORD: ${NUNTIUM_APP_PASSWORD}
+      {{- end }}
       INSTEDD_THEME: ${INSTEDD_THEME}
       {{- if .Values.INTERCOM_APP_ID }}
       INTERCOM_APP_ID: ${INTERCOM_APP_ID}
@@ -72,6 +78,12 @@ services:
       BASE_URL: ${BASE_URL}
       BROKER_HTTPD_BASE_URL: ${BASE_URL}
       TWILIO_CALLBACK_URL: ${BASE_URL}/twilio
+      {{- if .Values.NUNTIUM_HOST }}
+      NUNTIUM_HOST: ${NUNTIUM_HOST}
+      NUNTIUM_ACCOUNT: ${NUNTIUM_ACCOUNT}
+      NUNTIUM_APP: ${NUNTIUM_APP}
+      NUNTIUM_APP_PASSWORD: ${NUNTIUM_APP_PASSWORD}
+      {{- end }}
     stdin_open: true
     volumes:
     - ${VOLUME_ASTERISK_CONFIG}:/usr/local/etc/asterisk

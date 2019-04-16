@@ -47,6 +47,19 @@
       label: GUISSO client secret
       type: password
 
+    - variable: NUNTIUM_HOST
+      label: Nuntium Host
+      type: string
+    - variable: NUNTIUM_ACCOUNT
+      label: Nuntium Account
+      type: string
+    - variable: NUNTIUM_APP
+      label: Nuntium Application
+      type: string
+    - variable: NUNTIUM_APP_PASSWORD
+      label: Nuntium Application Password
+      type: password
+
     - variable: VERBOICE_ASTERISK_AUTOCONFIG
       label: Asterisk autoconfig mode
       type: enum
