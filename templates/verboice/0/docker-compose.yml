@@ -27,6 +27,12 @@ services:
       NUNTIUM_APP: ${NUNTIUM_APP}
       NUNTIUM_APP_PASSWORD: ${NUNTIUM_APP_PASSWORD}
       {{- end }}
+      {{- if .Values.HUB_ENABLED }}
+      HUB_ENABLED: ${HUB_ENABLED}
+      HUB_URL: ${HUB_URL}
+      HUB_TOKEN: ${HUB_TOKEN}
+      HUB_CONNECTOR_GUID: ${HUB_CONNECTOR_GUID}
+      {{- end }}
       INSTEDD_THEME: ${INSTEDD_THEME}
       {{- if .Values.INTERCOM_APP_ID }}
       INTERCOM_APP_ID: ${INTERCOM_APP_ID}
@@ -83,6 +89,10 @@ services:
       NUNTIUM_ACCOUNT: ${NUNTIUM_ACCOUNT}
       NUNTIUM_APP: ${NUNTIUM_APP}
       NUNTIUM_APP_PASSWORD: ${NUNTIUM_APP_PASSWORD}
+      {{- end }}
+      {{- if .Values.HUB_ENABLED }}
+      HUB_ENABLED: ${HUB_ENABLED}
+      HUB_URL: ${HUB_URL}
       {{- end }}
     stdin_open: true
     volumes:

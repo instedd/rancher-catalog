@@ -60,6 +60,20 @@
       label: Nuntium Application Password
       type: password
 
+    - variable: HUB_ENABLED
+      label: Enable Instedd Hub
+      type: boolean
+      default: false
+    - variable: HUB_URL
+      label: Hub Base URL
+      type: string
+    - variable: HUB_TOKEN
+      label: Hub Token
+      type: password
+    - variable: HUB_CONNECTOR_GUID
+      label: Hub Connector GUID
+      type: string
+
     - variable: VERBOICE_ASTERISK_AUTOCONFIG
       label: Asterisk autoconfig mode
       type: enum
