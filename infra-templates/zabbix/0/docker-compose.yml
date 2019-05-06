@@ -4,8 +4,9 @@ services:
     privileged: true
     image: manastech/rancher-zabbix-agent
     environment:
-      ZBX_SERVER_HOST: ${ZBX_SERVER_HOST}
+      ZBX_SERVER_HOST: proxy
       ZBX_METADATA: docker ${ZBX_METADATA}
+      AUTOCONFIG: aws
     network_mode: host
     volumes:
     - /:/mnt/rootfs
@@ -14,16 +15,34 @@ services:
     labels:
       io.rancher.container.pull_image: always
       io.rancher.scheduler.global: 'true'
+      io.rancher.container.dns: 'true'
   rancher-agent:
     image: manastech/rancher-zabbix-agent
     environment:
-      ZBX_SERVER_HOST: ${ZBX_SERVER_HOST}
+      ZBX_SERVER_HOST: proxy
       ZBX_HOSTNAME: ${RANCHER_AGENT_HOSTNAME}
-      ZBX_PASSIVE_ALLOW: 'false'
-      ZBX_STARTAGENTS: 0
       ZBX_METADATA: rancher ${ZBX_METADATA}
       HOST_GROUP: ${HOST_GROUP}
     labels:
       io.rancher.container.pull_image: always
       io.rancher.container.agent.role: environment
       io.rancher.container.create_agent: 'true'
+  proxy:
+    image: zabbix/zabbix-proxy-sqlite3
+    environment:
+      ZBX_SERVER_HOST: ${ZBX_SERVER_HOST}
+      ZBX_TLSCONNECT: psk
+      ZBX_TLSACCEPT: psk
+      ZBX_TLSPSKIDENTITY: ${PROXY_PSK_IDENTITY}
+      ZBX_TLSPSKFILE: ../../../../var/run/secrets/proxy.psk
+      ZBX_PROXYMODE: 1
+    ports:
+    - 10051:10051/tcp
+    secrets:
+    - mode: '0444'
+      uid: '0'
+      gid: '0'
+      source: ${PROXY_PSK_SECRET}
+      target: proxy.psk
+    labels:
+      io.rancher.container.pull_image: always

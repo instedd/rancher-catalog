@@ -20,3 +20,13 @@
       label: Host group where to place discovered proxy hosts
       required: true
       type: string
+
+    - variable: PROXY_PSK_IDENTITY
+      label: Proxy PSK identity
+      required: true
+      type: string
+      default: proy
+    - variable: PROXY_PSK_SECRET
+      label: Proxy PSK secret name
+      required: true
+      type: string
