@@ -25,7 +25,7 @@
       label: Proxy PSK identity
       required: true
       type: string
-      default: proy
+      default: proxy
     - variable: PROXY_PSK_SECRET
       label: Proxy PSK secret name
       required: true
