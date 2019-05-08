@@ -30,3 +30,8 @@
       label: Proxy PSK secret name
       required: true
       type: string
+    - variable: AGENT_AUTOCONFIG
+      label: Agent autoconfig mode (aws or interface name)
+      required: false
+      type: string
+      default: aws

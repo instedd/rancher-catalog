@@ -6,7 +6,7 @@ services:
     environment:
       ZBX_SERVER_HOST: proxy
       ZBX_METADATA: docker ${ZBX_METADATA}
-      AUTOCONFIG: aws
+      AUTOCONFIG: ${AGENT_AUTOCONFIG}
     network_mode: host
     volumes:
     - /:/mnt/rootfs
