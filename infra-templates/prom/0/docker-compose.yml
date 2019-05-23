@@ -12,7 +12,7 @@ services:
     labels:
       io.rancher.container.pull_image: always
       io.rancher.scheduler.global: 'true'
-  promproxy:
+  proxy:
     image: juanwaj/promproxy
     environment:
       PROMPROXY_ENV_LABEL: ${PROMPROXY_ENV_LABEL}
