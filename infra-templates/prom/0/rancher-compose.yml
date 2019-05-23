@@ -1,0 +1,15 @@
+.catalog:
+  name: Prometheus Agents
+  version: '0.1'
+  description: Stack to run Prometheus agents to monitor a Rancher environment
+  minimum_rancher_version: v1.5.0
+  questions:
+    - variable: PROMPROXY_ENV_LABEL
+      label: Environment name
+      required: true
+      type: string
+    - variable: PROMPROXY_PORT
+      label: Listening port
+      required: true
+      type: int
+      default: 9999
