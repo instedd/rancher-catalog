@@ -96,6 +96,9 @@ services:
     network_mode: container:rabbitmq
     mem_limit: 16m
     mem_reservation: 16m
+    environment:
+      RABBIT_USER: nuntium
+      RABBIT_PASSWORD: nuntium
     labels:
       io.rancher.container.pull_image: always
   {{- end }}
