@@ -78,7 +78,7 @@
       label: Secret store with YAML configuration for Twitter
       type: string
       required: false
-    
+
     - variable: SMTP_HOST
       label: SMTP Host
       required: false
@@ -101,6 +101,11 @@
       required: true
       type: string
       default: nuntium@instedd.org
+
+    - variable: PROM_EXPORTERS
+      label: Enable Prometheus exporters
+      type: boolean
+      default: false
 
     - variable: WEB_MEM_LIMIT
       label: Memory limit (web process)

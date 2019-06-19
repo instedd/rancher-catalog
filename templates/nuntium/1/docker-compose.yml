@@ -51,6 +51,20 @@ services:
     {{- if .Values.MEMCACHED_MEM_RESERVATION }}
     mem_reservation: ${MEMCACHED_MEM_RESERVATION}
     {{- end }}
+    {{- if .Values.PROM_EXPORTERS }}
+    labels:
+      io.rancher.sidekicks: asterisk-bridge
+    {{- end }}
+
+  {{- if .Values.PROM_EXPORTERS }}
+  memcached-exporter:
+    image: prom/memcached-exporter
+    network_mode: container:memcached
+    mem_limit: 16m
+    mem_reservation: 16m
+    labels:
+      io.rancher.container.pull_image: always
+  {{- end }}
 
   rabbitmq:
     image: rabbitmq:3.6
