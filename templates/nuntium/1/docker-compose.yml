@@ -53,7 +53,7 @@ services:
     {{- end }}
     {{- if .Values.PROM_EXPORTERS }}
     labels:
-      io.rancher.sidekicks: asterisk-bridge
+      io.rancher.sidekicks: memcached-exporter
     {{- end }}
 
   {{- if .Values.PROM_EXPORTERS }}
