@@ -67,7 +67,11 @@ services:
   {{- end }}
 
   rabbitmq:
+    {{- if .Values.PROM_EXPORTERS }}
+    image: rabbitmq:3.6-management
+    {{- else }}
     image: rabbitmq:3.6
+    {{- end }}
     hostname: ${RABBITMQ_HOSTNAME}
     volumes:
       - ${RABBITMQ_VOLUME}:/var/lib/rabbitmq
@@ -81,6 +85,20 @@ services:
     {{- if .Values.RABBITMQ_MEM_RESERVATION }}
     mem_reservation: ${RABBITMQ_MEM_RESERVATION}
     {{- end }}
+    {{- if .Values.PROM_EXPORTERS }}
+    labels:
+      io.rancher.sidekicks: rabbitmq-exporter
+    {{- end }}
+
+  {{- if .Values.PROM_EXPORTERS }}
+  rabbitmq-exporter:
+    image: kbudde/rabbitmq-exporter
+    network_mode: container:rabbitmq
+    mem_limit: 16m
+    mem_reservation: 16m
+    labels:
+      io.rancher.container.pull_image: always
+  {{- end }}
 
   workerfast:
     <<: *rails
