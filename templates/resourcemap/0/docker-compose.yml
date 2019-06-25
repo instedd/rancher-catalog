@@ -5,6 +5,9 @@ services:
     image: instedd/resourcemap:${RESMAP_VERSION}
     labels:
       io.rancher.container.pull_image: always
+      {{- if eq .Values.ELASTICSEARCH "true" }}
+      io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name={{ .Stack.Name }}/elasticsearch
+      {{- end }}
     environment:
       INSTEDD_THEME: https://a4b5cff76c528f65ea0a-27a040455636240d133755398736da07.ssl.cf2.rackcdn.com
       RAILS_ENV: production
@@ -69,6 +72,20 @@ services:
     labels:
       io.rancher.container.pull_image: always
       io.rancher.container.start_once: "true"
+
+  {{- if eq .Values.ELASTICSEARCH "true" }}
+  elasticsearch:
+    image: ${ELASTICSEARCH_IMAGE}
+    environment:
+      ES_HEAP_SIZE: ${ELASTICSEARCH_HEAP_SIZE}
+      ES_JAVA_OPTS: ${ELASTICSEARCH_JAVA_OPTS}
+    volumes:
+    - ${VOLUME_ELASTICSEARCH}:/usr/share/elasticsearch/data
+    mem_limit: ${ELASTICSEARCH_MEM_LIMIT}
+    mem_reservation: ${ELASTICSEARCH_MEM_RESERVATION}
+    labels:
+      io.rancher.container.pull_image: always
+  {{- end }}
 
 volumes:
   {{ .Values.VOLUME_REDIS }}:

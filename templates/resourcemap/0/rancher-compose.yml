@@ -30,6 +30,11 @@
       type: string
       required: true
 
+    - variable: ELASTICSEARCH
+      label: Include Elasticsearch in the stack
+      type: boolean
+      default: false
+
     - variable: ELASTICSEARCH_URL
       label: Elasticsearch Url
       required: true
@@ -101,6 +106,19 @@
       type: string
       required: false
 
+    - variable: ELASTICSEARCH_IMAGE
+      label: Elasticsearch Image
+      type: string
+      default: elasticsearch:1.7
+    - variable: ELASTICSEARCH_HEAP_SIZE
+      label: Java Heap Size for Elasticsearch
+      type: string
+      default: 2048m
+    - variable: ELASTICSEARCH_JAVA_OPTS
+      label: Java Options for Elasticsearch
+      type: string
+      default: -Des.index.number_of_shards=1 -Des.index.number_of_replicas=0
+
     - variable: VOLUME_DRIVER
       label: Volume Driver
       type: string
@@ -118,6 +136,10 @@
       label: Import Wizard Temp Volume
       type: string
       required: true
+    - variable: VOLUME_ELASTICSEARCH
+      label: Elasticsearch Data Volume
+      type: string
+      required: false
 
     - variable: WEB_MEM_LIMIT
       label: Memory limit (web process)
@@ -162,3 +184,14 @@
       type: string
       required: true
       default: 128m
+
+    - variable: ELASTICSEARCH_MEM_LIMIT
+      label: Memory limit (elasticsearch process)
+      type: string
+      required: true
+      default: 3g
+    - variable: ELASTICSEARCH_MEM_RESERVATION
+      label: Memory reservation (elasticsearch process)
+      type: string
+      required: true
+      default: 2g
