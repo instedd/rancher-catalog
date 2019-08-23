@@ -1,0 +1,74 @@
+.catalog:
+  name: Maap Store
+  version: '0.1'
+  description: Maap Store
+  minimum_rancher_version: v1.5.0
+  questions:
+    - variable: MAAP_VERSION
+      label: Maap Store version
+      required: true
+      type: string
+    - variable: SECRET_KEY_BASE
+      label: Secret Token (used to sign/encrypt session tokens)
+      type: password
+      required: true
+
+    - variable: DATABASE_HOST
+      label: Database Host
+      required: true
+      type: string
+    - variable: DATABASE_USER
+      label: Database User
+      required: true
+      type: string
+    - variable: DATABASE_PASS
+      label: Database Password
+      type: password
+    - variable: DATABASE_NAME
+      label: Database Name
+      type: string
+      required: true
+
+    - variable: VOLUME_APP_DATA
+      label: Volume for app data
+      type: string
+      required: true
+      default: maap-app-data
+    - variable: VOLUME_CACHE_DATA
+      label: Volume for cache data
+      type: string
+      required: true
+      default: maap-cache-data
+
+    - variable: WEB_MEM_RESERVATION
+      label: Memory reservation (web process)
+      type: string
+      required: true
+      default: 256m
+    - variable: WEB_MEM_LIMIT
+      label: Memory limit (web process)
+      type: string
+      required: true
+      default: 512m
+
+    - variable: WORKER_MEM_RESERVATION
+      label: Memory reservation (worker process)
+      type: string
+      required: true
+      default: 128m
+    - variable: WORKER_MEM_LIMIT
+      label: Memory limit (worker process)
+      type: string
+      required: true
+      default: 256m
+
+    - variable: CACHE_MEM_RESERVATION
+      label: Memory reservation (cache process)
+      type: string
+      required: true
+      default: 32m
+    - variable: CACHE_MEM_LIMIT
+      label: Memory limit (cache process)
+      type: string
+      required: true
+      default: 64m

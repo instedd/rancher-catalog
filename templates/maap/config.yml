@@ -1,0 +1,7 @@
+name: Maap Store
+description: Maap Store
+version: '0.1'
+category: Messaging
+maintainer: Juan Wajnerman <waj@manas.tech>
+license: The MIT License
+projectURL: https://www.github.com/instedd/maap-store
