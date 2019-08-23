@@ -19,7 +19,7 @@ services:
     mem_limit: ${WEB_MEM_LIMIT}
 
   worker:
-    <<: *app
+    <<: *web
     command: bundle exec sidekiq
     mem_reservation: ${WORKER_MEM_RESERVATION}
     mem_limit: ${WORKER_MEM_LIMIT}
