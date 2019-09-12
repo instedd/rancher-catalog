@@ -94,8 +94,8 @@ services:
   rabbitmq-exporter:
     image: kbudde/rabbitmq-exporter
     network_mode: container:rabbitmq
-    mem_limit: 32m
-    mem_reservation: 32m
+    mem_limit: 64m
+    mem_reservation: 64m
     environment:
       RABBIT_USER: nuntium
       RABBIT_PASSWORD: nuntium
