@@ -139,3 +139,15 @@
       type: string
       required: false
       default: 64m
+
+web:
+  health_check:
+    port: 80
+    request_line: GET / HTTP/1.0
+    interval: 60000
+    initializing_timeout: 120000
+    reinitializing_timeout: 120000
+    healthy_threshold: 1
+    unhealthy_threshold: 2
+    response_timeout: 2000
+    strategy: recreate
