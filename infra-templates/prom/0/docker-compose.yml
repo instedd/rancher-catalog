@@ -39,3 +39,14 @@ services:
       io.rancher.container.agent.role: environment
       io.rancher.container.create_agent: 'true'
       io.rancher.container.pull_image: always
+  docker-cluster-exporter:
+    privileged: true
+    image: instedd/docker-cluster-exporter
+    network_mode: host
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /sys:/host/sys
+    pid: host
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.scheduler.global: 'true'
