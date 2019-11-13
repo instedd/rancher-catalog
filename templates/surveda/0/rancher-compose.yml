@@ -60,8 +60,12 @@
       type: password
       required: true
 
-    - variable: GOOGLE_URL_SHORTENER_API_KEY
-      label: API Key for the Google URL shortener
+    - variable: URL_SHORTENER_API_KEY
+      label: API Key for InSTEDD's URL shortener service (if used)
+      type: string
+      required: false
+    - variable: URL_SHORTENER_SERVICE
+      label: InSTEDD's URL shortener service URL (if not the default)
       type: string
       required: false
     - variable: MOBILE_WEB_BASE_URL
