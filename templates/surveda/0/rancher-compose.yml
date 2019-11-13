@@ -62,7 +62,7 @@
 
     - variable: URL_SHORTENER_API_KEY
       label: API Key for InSTEDD's URL shortener service (if used)
-      type: string
+      type: password
       required: false
     - variable: URL_SHORTENER_SERVICE
       label: InSTEDD's URL shortener service URL (if not the default)
