@@ -101,10 +101,6 @@
       label: Sentry DSN
       type: string
       required: false
-    - variable: SENTRY_PUBLIC_DSN
-      label: Sentry Public DSN
-      type: string
-      required: false
 
     - variable: RUNTIME_MEM_LIMIT
       label: Memory limit (runtime process)

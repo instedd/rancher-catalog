@@ -103,10 +103,6 @@
       label: Sentry DSN
       type: string
       required: false
-    - variable: SENTRY_PUBLIC_DSN
-      label: Sentry Public DSN
-      type: string
-      required: false
 
     - variable: GUISSO_ENABLED
       label: Enable Guisso for SSO
