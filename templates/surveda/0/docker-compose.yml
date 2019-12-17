@@ -53,11 +53,11 @@ services:
       SMTP_SERVER: ${SMTP_SERVER}
       SMTP_USER: ${SMTP_USER}
       {{- if .Values.EMAIL_FROM_EMAIL }}
-        {{- if .Values.EMAIL_FROM_NAME }}
-          SMTP_FROM_ADDRESS: "${EMAIL_FROM_NAME} <${EMAIL_FROM_EMAIL}>"
-        {{- else }}
-          SMTP_FROM_ADDRESS: "InSTEDD Surveda <${EMAIL_FROM_EMAIL}>"
-        {{- end }}
+      {{- if .Values.EMAIL_FROM_NAME }}
+      SMTP_FROM_ADDRESS: "${EMAIL_FROM_NAME} <${EMAIL_FROM_EMAIL}>"
+      {{- else }}
+      SMTP_FROM_ADDRESS: "InSTEDD Surveda <${EMAIL_FROM_EMAIL}>"
+      {{- end }}
       {{- end }}
       {{- if .Values.INTERCOM_APP_ID }}
       INTERCOM_APP_ID: ${INTERCOM_APP_ID}
