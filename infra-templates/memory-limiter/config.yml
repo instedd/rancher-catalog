@@ -1,0 +1,6 @@
+name: Memory Limiter
+description: |
+  Configures Linux cgroups to avoid hosts running out of memory
+version: '0.1'
+category: Monitoring
+maintainer: Juan Wajnerman <waj@manas.tech>
