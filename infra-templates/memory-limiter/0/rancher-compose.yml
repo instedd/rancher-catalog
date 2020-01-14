@@ -1,4 +1,5 @@
-version: '2'
-services:
-  mem-limit:
-    start_on_create: true
+.catalog:
+  name: Memory Limiter
+  version: '0.1'
+  description: Configures Linux cgroups to avoid hosts running out of memory
+  minimum_rancher_version: v1.5.0
