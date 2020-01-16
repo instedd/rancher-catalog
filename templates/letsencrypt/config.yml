@@ -1,0 +1,8 @@
+name: Let's Encrypt (ACMEv2)
+description: |
+  Trusted SSL certificates at zero cost
+version: 1.0.0
+category: Security
+maintainer: Matias Garcia Isaia <mgarcia@manas.tech>
+license: The MIT License
+projectURL: https://github.com/vxcontrol/rancher-letsencrypt
