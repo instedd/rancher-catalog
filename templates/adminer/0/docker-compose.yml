@@ -1,14 +1,14 @@
 version: '2'
 services:
   oauth2-proxy:
-    image: a5huynh/oauth2_proxy
+    image: quay.io/pusher/oauth2_proxy:v5.0.0
     mem_reservation: 4m
     mem_limit: 16m
     command:
       - --provider=github
       - --email-domain=*
       - --upstream=http://adminer:8080
-      - --http-address=http://0.0.0.0:80
+      - --http-address=http://0.0.0.0:8080
       - --pass-basic-auth=false
       - --github-org=${GITHUB_ORG}
       - --github-team=${GITHUB_TEAM}

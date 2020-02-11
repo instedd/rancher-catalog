@@ -24,7 +24,7 @@ services:
       io.rancher.container.pull_image: always
       io.rancher.scheduler.global: 'true'
   oauth2-proxy:
-    image: a5huynh/oauth2_proxy
+    image: quay.io/pusher/oauth2_proxy:v5.0.0
     mem_reservation: 4m
     mem_limit: 16m
     environment:
@@ -35,7 +35,7 @@ services:
     - --provider=github
     - --email-domain=*
     - --upstream=https://${ES_HOST}
-    - --http-address=http://0.0.0.0:80
+    - --http-address=http://0.0.0.0:8080
     - --pass-basic-auth=false
     - --github-org=${OAUTH2_PROXY_GITHUB_ORG}
     - --github-team=${OAUTH2_PROXY_GITHUB_TEAM}
