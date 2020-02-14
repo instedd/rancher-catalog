@@ -39,7 +39,7 @@
       required: true
       type: string
     - variable: S3_SECRET_ACCESS_KEY
-      label: S3 access key
+      label: S3 secret access key
       type: string
     - variable: S3_BUCKET
       label: S3 bucket

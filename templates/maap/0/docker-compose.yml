@@ -41,7 +41,7 @@ services:
       aslm-runner: 'true'
     mem_reservation: ${CACHE_MEM_RESERVATION}
     mem_limit: ${CACHE_MEM_LIMIT}
-  s3_export:
+  export:
     image: schickling/postgres-backup-s3
     environment:
       SCHEDULE: '@daily'
