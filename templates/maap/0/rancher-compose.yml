@@ -40,6 +40,7 @@
       type: string
     - variable: S3_SECRET_ACCESS_KEY
       label: S3 access key
+      type: string
     - variable: S3_BUCKET
       label: S3 bucket
       type: string
