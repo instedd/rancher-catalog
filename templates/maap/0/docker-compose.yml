@@ -11,9 +11,16 @@ services:
       RAILS_ENV: production
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
       REDIS_URL: redis://cache
+      AWS_REGION: ${S3_REGION}
+      AWS_ACCESS_KEY_ID: ${S3_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${S3_SECRET_ACCESS_KEY}
+      AWS_S3_BUCKET: ${S3_BUCKET}
+      AWS_S3_PREFIX: ${S3_PREFIX}
     volumes:
       - ${VOLUME_APP_DATA}:/data
     labels:
+      io.rancher.scheduler.affinity:host_label: aslm-runner=true
+      aslm-runner: 'true'
       io.rancher.container.pull_image: always
     mem_reservation: ${WEB_MEM_RESERVATION}
     mem_limit: ${WEB_MEM_LIMIT}
@@ -30,5 +37,27 @@ services:
       - ${VOLUME_CACHE_DATA}:/data
     labels:
       io.rancher.container.pull_image: always
+      io.rancher.scheduler.affinity:host_label: aslm-runner=true
+      aslm-runner: 'true'
     mem_reservation: ${CACHE_MEM_RESERVATION}
     mem_limit: ${CACHE_MEM_LIMIT}
+  s3_export:
+    image: schickling/postgres-backup-s3
+    environment:
+      SCHEDULE: '@daily'
+      S3_REGION: ${S3_REGION}
+      S3_ACCESS_KEY_ID: ${S3_ACCESS_KEY_ID}
+      S3_SECRET_ACCESS_KEY: ${S3_SECRET_ACCESS_KEY}
+      S3_BUCKET: ${S3_BUCKET}
+      S3_PREFIX: ${S3_PREFIX}
+      POSTGRES_DATABASE: maap-demo
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASS}
+      POSTGRES_EXTRA_OPTS: -t antibiotic_consumption_stats -t patients -t patient_entries -t lab_records -t lab_record_imports -t specimen_sources -t electronic_pharmacy_stock_records -t sites -t culture_types -t clinical_services -t antibiotics
+      POSTGRES_HOST: ${DATABASE_HOST}
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.scheduler.affinity:host_label: aslm-runner=true
+      aslm-runner: 'true'
+    mem_reservation: ${EXPORT_MEM_RESERVATION}
+    mem_limit: ${EXPORT_MEM_LIMIT}
