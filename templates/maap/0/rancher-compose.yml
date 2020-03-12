@@ -64,43 +64,35 @@
     - variable: WEB_MEM_RESERVATION
       label: Memory reservation (web process)
       type: string
-      required: true
       default: 256m
     - variable: WEB_MEM_LIMIT
       label: Memory limit (web process)
       type: string
-      required: true
       default: 512m
 
     - variable: WORKER_MEM_RESERVATION
       label: Memory reservation (worker process)
       type: string
-      required: true
       default: 128m
     - variable: WORKER_MEM_LIMIT
       label: Memory limit (worker process)
       type: string
-      required: true
       default: 256m
 
     - variable: CACHE_MEM_RESERVATION
       label: Memory reservation (cache process)
       type: string
-      required: true
       default: 32m
     - variable: CACHE_MEM_LIMIT
       label: Memory limit (cache process)
       type: string
-      required: true
       default: 64m
 
     - variable: EXPORT_MEM_RESERVATION
       label: Memory reservation (export process)
       type: string
-      required: true
       default: 32m
     - variable: EXPORT_MEM_LIMIT
       label: Memory limit (export process)
       type: string
-      required: true
       default: 64m

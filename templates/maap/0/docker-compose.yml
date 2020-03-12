@@ -22,14 +22,22 @@ services:
       io.rancher.scheduler.affinity:host_label: aslm-runner=true
       aslm-runner: 'true'
       io.rancher.container.pull_image: always
+    {{- if .Values.WEB_MEM_RESERVATION }}
     mem_reservation: ${WEB_MEM_RESERVATION}
+    {{- end}}
+    {{- if .Values.WEB_MEM_LIMIT }}
     mem_limit: ${WEB_MEM_LIMIT}
+    {{- end}}
 
   worker:
     <<: *web
     command: bundle exec sidekiq
+    {{- if .Values.WORKER_MEM_RESERVATION }}
     mem_reservation: ${WORKER_MEM_RESERVATION}
+    {{- end}}
+    {{- if .Values.WORKER_MEM_LIMIT }}
     mem_limit: ${WORKER_MEM_LIMIT}
+    {{- end}}
 
   cache:
     image: redis
@@ -39,8 +47,12 @@ services:
       io.rancher.container.pull_image: always
       io.rancher.scheduler.affinity:host_label: aslm-runner=true
       aslm-runner: 'true'
+    {{- if .Values.CACHE_MEM_RESERVATION }}
     mem_reservation: ${CACHE_MEM_RESERVATION}
+    {{- end}}
+    {{- if .Values.CACHE_MEM_LIMIT }}
     mem_limit: ${CACHE_MEM_LIMIT}
+    {{- end}}
   export:
     image: schickling/postgres-backup-s3
     environment:
@@ -59,5 +71,9 @@ services:
       io.rancher.container.pull_image: always
       io.rancher.scheduler.affinity:host_label: aslm-runner=true
       aslm-runner: 'true'
+    {{- if .Values.EXPORT_MEM_RESERVATION }}
     mem_reservation: ${EXPORT_MEM_RESERVATION}
+    {{- end}}
+    {{- if .Values.EXPORT_MEM_LIMIT }}
     mem_limit: ${EXPORT_MEM_LIMIT}
+    {{- end}}
