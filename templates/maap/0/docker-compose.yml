@@ -66,7 +66,7 @@ services:
       S3_SECRET_ACCESS_KEY: ${S3_SECRET_ACCESS_KEY}
       S3_BUCKET: ${S3_BUCKET}
       S3_PREFIX: ${S3_PREFIX}
-      POSTGRES_DATABASE: maap-demo
+      POSTGRES_DATABASE: ${DATABASE_NAME}
       POSTGRES_USER: ${DATABASE_USER}
       POSTGRES_PASSWORD: ${DATABASE_PASS}
       POSTGRES_EXTRA_OPTS: -t antibiotic_consumption_stats -t patients -t patient_entries -t lab_records -t lab_record_imports -t specimen_sources -t electronic_pharmacy_stock_records -t sites -t culture_types -t clinical_services -t antibiotics
