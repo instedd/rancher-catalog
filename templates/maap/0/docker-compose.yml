@@ -43,6 +43,24 @@ services:
     mem_limit: ${WORKER_MEM_LIMIT}
     {{- end}}
 
+  db-migrate:
+    image: instedd/maap-store:${MAAP_VERSION}
+    environment:
+      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_USERNAME: ${DATABASE_USER}
+      DATABASE_PASSWORD: ${DATABASE_PASS}
+      DATABASE_NAME: ${DATABASE_NAME}
+      RAILS_ENV: production
+      SECRET_KEY_BASE: ${SECRET_KEY_BASE}
+    command:
+    - bundle
+    - exec
+    - rails
+    - db:migrate
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.container.start_once: 'true'
+
   cache:
     image: redis
     volumes:
