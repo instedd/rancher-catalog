@@ -36,7 +36,7 @@
     - variable: SIDEKIQ_PASSWORD
       label: Sidekiq Password
       required: true
-      type: string
+      type: password
 
     - variable: S3_REGION
       label: S3 region
