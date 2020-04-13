@@ -20,6 +20,8 @@ services:
       AWS_SECRET_ACCESS_KEY: ${S3_SECRET_ACCESS_KEY}
       AWS_S3_BUCKET: ${S3_BUCKET}
       AWS_S3_PREFIX: ${S3_PREFIX}
+      SIDEKIQ_USER: ${SIDEKIQ_USER}
+      SIDEKIQ_PASSWORD: ${SIDEKIQ_PASSWORD}
     volumes:
       - ${VOLUME_APP_DATA}:/data
     labels:

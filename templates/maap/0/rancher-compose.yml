@@ -29,6 +29,14 @@
       type: string
       required: true
 
+    - variable: SIDEKIQ_USER
+      label: Sidekiq User
+      required: true
+      type: string
+    - variable: SIDEKIQ_PASSWORD
+      label: Sidekiq Password
+      required: true
+      type: string
 
     - variable: S3_REGION
       label: S3 region
