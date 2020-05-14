@@ -100,6 +100,13 @@
       required: true
       default: 587
 
+
+    - variable: GOOGLE_SHEET_API_KEY
+      label: Google Sheets API Key
+      required: false
+      type: password
+
+
     - variable: VOLUME_DRIVER
       label: Volume Driver
       type: string
