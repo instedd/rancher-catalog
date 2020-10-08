@@ -37,6 +37,10 @@ services:
       {{- if .Values.INTERCOM_APP_ID }}
       INTERCOM_APP_ID: ${INTERCOM_APP_ID}
       {{- end }}
+      {{- if .Values.RECAPTCHA_SITE_KEY }}
+      RECAPTCHA_SITE_KEY: ${RECAPTCHA_SITE_KEY}
+      RECAPTCHA_SECRET_KEY: ${RECAPTCHA_SECRET_KEY}
+      {{- end }}
       {{- if eq .Values.USE_MEMCACHED_FOR_OPENID_STORE "true" }}
       OPENID_STORE: memcached://memcached
       {{- end }}

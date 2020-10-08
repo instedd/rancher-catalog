@@ -90,6 +90,15 @@
       label: Intercom App ID
       type: string
       required: false
+    
+    - variable: RECAPTCHA_SITE_KEY
+      label: reCAPTCHA Site Key
+      type: string
+      required: false
+    - variable: RECAPTCHA_SECRET_KEY
+      label: reCAPTCHA Secret Key
+      type: password
+      required: false
 
     - variable: USE_MEMCACHED_FOR_OPENID_STORE
       label: Use memcached for OpenID store (recommended)
