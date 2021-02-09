@@ -1,7 +1,7 @@
 name: Facility Public Portal
 description: |
   InSTEDD Facility Public Portal
-version: '0.3'
+version: '0.4'
 category: Map
 maintainer: Juan Wajnerman <waj@manas.tech>
 license: The MIT License

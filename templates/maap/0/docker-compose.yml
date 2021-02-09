@@ -78,7 +78,7 @@ services:
     mem_limit: ${CACHE_MEM_LIMIT}
     {{- end}}
   export:
-    image: schickling/postgres-backup-s3
+    image: matiasgarciaisaia/postgres-backup-s3:12.5
     environment:
       SCHEDULE: '@daily'
       S3_REGION: ${S3_REGION}
@@ -104,7 +104,7 @@ services:
 
   {{- if .Values.BACKUP_S3_BUCKET }}
   backup:
-    image: schickling/postgres-backup-s3
+    image: matiasgarciaisaia/postgres-backup-s3:12.5
     environment:
       SCHEDULE: '@daily'
       S3_REGION: ${BACKUP_S3_REGION}

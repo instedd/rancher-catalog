@@ -1,0 +1,175 @@
+.catalog:
+  name: Facility Public Portal
+  version: '0.4'
+  description: InSTEDD Facility Public Portal
+  minimum_rancher_version: v1.5.0
+  questions:
+    - variable: FPP_VERSION
+      label: Facility Public Portal version
+      required: true
+      type: string
+
+    - variable: EXTERNAL_DATABASE
+      label: Use External Database
+      required: true
+      type: boolean
+      default: false
+    - variable: DATABASE_HOST
+      label: External Database Host
+      type: string
+    - variable: DATABASE_USER
+      label: External Database User
+      type: string
+    - variable: DATABASE_PASS
+      label: External Database Password
+      type: password
+    - variable: DATABASE_NAME
+      label: External Database Name
+      type: string
+
+    - variable: EXTERNAL_ELASTICSEARCH
+      label: Use External ElasticSearch
+      required: true
+      type: boolean
+      default: false
+    - variable: ELASTICSEARCH_URL
+      label: Elasticsearch Url
+      type: string
+    - variable: ELASTICSEARCH_INDEX
+      label: Elasticsearch Index
+      type: string
+      default: facilities
+
+    - variable: INPUT_DIR
+      label: Input directory (where the CSV files are stored)
+      type: string
+      required: true
+      default: data/input
+
+    - variable: ALLOWED_REQUEST_ORIGINS
+      label: Allowed request origins (for websocket connections)
+      type: string
+
+    - variable: FAKE_USER_POSITION
+      label: Use fake user position?
+      type: string
+      default: 1
+
+    - variable: DEFAULT_LOCALE
+      label: Default locale
+      type: string
+
+    - variable: SECRET_KEY_BASE
+      label: Secret Key Base (used to sign/encrypt session tokens)
+      type: password
+      required: true
+
+
+    - variable: ADMIN_USER
+      label: Content Admin Username
+      type: string
+      default: admin
+      required: true
+    - variable: ADMIN_PASS
+      label: Content Admin Password
+      type: password
+      required: true
+
+    - variable: REPORT_EMAIL_TO
+      label: Report Email Address
+      description: Email to send facilities reports
+      type: string
+      required: true
+
+
+    - variable: SMTP_HOST
+      label: SMTP Host
+      required: true
+      type: string
+      default: email-smtp.us-east-1.amazonaws.com
+    - variable: SMTP_USER
+      label: SMTP User
+      required: true
+      type: string
+    - variable: SMTP_PASS
+      label: SMTP Password
+      type: password
+    - variable: SMTP_PORT
+      label: SMTP Port
+      type: int
+      required: true
+      default: 587
+
+
+    - variable: GOOGLE_SHEET_API_KEY
+      label: Google Sheets API Key
+      required: false
+      type: password
+
+
+    - variable: VOLUME_DRIVER
+      label: Volume Driver
+      type: string
+      default: rancher-nfs
+      required: true
+    - variable: VOLUME_IMPORT_DATA
+      label: Import Data Volume
+      type: string
+      required: true
+    - variable: VOLUME_SETTINGS
+      label: Settings Volume
+      type: string
+      required: true
+    - variable: VOLUME_PICTURES
+      label: Pictures Volume
+      type: string
+      required: true
+    - variable: VOLUME_PG_DATA
+      label: Internal Postgres Data Volume
+      type: string
+    - variable: VOLUME_ES_DATA
+      label: Internal Elasticsearch Data Volume
+      type: string
+    - variable: VOLUME_PUBLIC_OVERRIDE
+      label: Volume with files to override public files
+      type: string
+
+    - variable: PRIMARY_COLOR
+      label: Primary color override
+      type: string
+    - variable: TOPNAV_BACKGROUND_COLOR
+      label: Navigation bar background color override
+      type: string
+
+    - variable: WEB_MEM_LIMIT
+      label: Memory limit (web process)
+      type: string
+      required: false
+      default: 512m
+    - variable: WEB_MEM_RESERVATION
+      label: Memory reservation (web process)
+      type: string
+      required: false
+      default: 256m
+
+    - variable: DB_MEM_LIMIT
+      label: Memory limit (db process)
+      type: string
+      required: false
+      default: 128m
+    - variable: DB_MEM_RESERVATION
+      label: Memory reservation (db process)
+      type: string
+      required: false
+      default: 32m
+
+    - variable: ES_MEM_LIMIT
+      label: Memory limit (elasticsearch process)
+      type: string
+      required: false
+      default: 512m
+    - variable: ES_MEM_RESERVATION
+      label: Memory reservation (elasticsearch process)
+      type: string
+      required: false
+      default: 256m

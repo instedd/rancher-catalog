@@ -1,0 +1,122 @@
+version: '2'
+
+services:
+  web: &app
+    image: instedd/vitalwave:${FPP_VERSION}
+    labels:
+      io.rancher.container.pull_image: always
+    environment:
+      {{- if eq .Values.EXTERNAL_DATABASE "true" }}
+      DATABASE_URL: postgres://${DATABASE_USER}:${DATABASE_PASS}@${DATABASE_HOST}/${DATABASE_NAME}
+      {{- else }}
+      DATABASE_URL: postgres://facilities@db/facilities
+      {{- end }}
+
+      {{- if eq .Values.EXTERNAL_ELASTICSEARCH "true" }}
+      ELASTICSEARCH_URL: ${ELASTICSEARCH_URL}
+      ELASTICSEARCH_INDEX: ${ELASTICSEARCH_INDEX}
+      {{- else }}
+      ELASTICSEARCH_URL: elasticsearch
+      ELASTICSEARCH_INDEX: facilities
+      {{- end }}
+
+      SETTINGS__INPUT_DIR: ${INPUT_DIR}
+      ALLOWED_REQUEST_ORIGINS: ${ALLOWED_REQUEST_ORIGINS}
+      FAKE_USER_POSITION: ${FAKE_USER_POSITION}
+
+      GOOGLE_SHEET_API_KEY: ${GOOGLE_SHEET_API_KEY}
+
+      SECRET_KEY_BASE: ${SECRET_KEY_BASE}
+
+      {{- if .Values.DEFAULT_LOCALE }}
+      SETTINGS__DEFAULT_LOCALE: ${DEFAULT_LOCALE}
+      {{- end }}
+
+      SETTINGS__ADMIN_USER: ${ADMIN_USER}
+      SETTINGS__ADMIN_PASS: ${ADMIN_PASS}
+
+      SETTINGS__REPORT_EMAIL_TO: ${REPORT_EMAIL_TO}
+
+      SETTINGS__SMTP_SETTINGS__ADDRESS: ${SMTP_HOST}
+      SETTINGS__SMTP_SETTINGS__PASSWORD: ${SMTP_PASS}
+      SETTINGS__SMTP_SETTINGS__PORT: ${SMTP_PORT}
+      SETTINGS__SMTP_SETTINGS__USER_NAME: ${SMTP_USER}
+      PRIMARY_COLOR: ${PRIMARY_COLOR}
+      TOPNAV_BACKGROUND_COLOR: ${TOPNAV_BACKGROUND_COLOR}
+    volumes:
+      - ${VOLUME_SETTINGS}:/app/config/settings
+      - ${VOLUME_IMPORT_DATA}:/app/data
+      - ${VOLUME_PICTURES}:/app/public/pictures
+      {{- if .Values.VOLUME_PUBLIC_OVERRIDE }}
+      - ${VOLUME_PUBLIC_OVERRIDE}:/app/public_override
+      {{- end }}
+    {{- if .Values.WEB_MEM_LIMIT }}
+    mem_limit: ${WEB_MEM_LIMIT}
+    {{- end }}
+    {{- if .Values.WEB_MEM_RESERVATION }}
+    mem_reservation: ${WEB_MEM_RESERVATION}
+    {{- end }}
+
+  db-migrate:
+    <<: *app
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.container.start_once: "true"
+    command: rake db:migrate
+    mem_reservation: 4m
+
+  {{- if eq .Values.EXTERNAL_DATABASE "false" }}
+  db:
+    image: postgres:12.5
+    environment:
+      POSTGRES_DB: facilities
+      POSTGRES_USER: facilities
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - ${VOLUME_PG_DATA}:/var/lib/postgresql/data
+    {{- if .Values.DB_MEM_LIMIT }}
+    mem_limit: ${DB_MEM_LIMIT}
+    {{- end }}
+    {{- if .Values.DB_MEM_RESERVATION }}
+    mem_reservation: ${DB_MEM_RESERVATION}
+    {{- end }}
+  {{- end }}
+
+  {{- if eq .Values.EXTERNAL_ELASTICSEARCH "false" }}
+  elasticsearch:
+    image: elasticsearch:2.4
+    volumes:
+      - ${VOLUME_ES_DATA}:/usr/share/elasticsearch/data
+    {{- if .Values.ES_MEM_LIMIT }}
+    mem_limit: ${ES_MEM_LIMIT}
+    {{- end }}
+    {{- if .Values.ES_MEM_RESERVATION }}
+    mem_reservation: ${ES_MEM_RESERVATION}
+    {{- end }}
+  {{- end }}
+
+volumes:
+  {{ .Values.VOLUME_IMPORT_DATA }}:
+    driver: ${VOLUME_DRIVER}
+    external: true
+  {{ .Values.VOLUME_SETTINGS }}:
+    driver: ${VOLUME_DRIVER}
+    external: true
+  {{ .Values.VOLUME_PICTURES }}:
+    driver: ${VOLUME_DRIVER}
+    external: true
+  {{- if eq .Values.EXTERNAL_DATABASE "false" }}
+  {{ .Values.VOLUME_PG_DATA }}:
+    driver: ${VOLUME_DRIVER}
+    external: true
+  {{- end }}
+  {{- if eq .Values.EXTERNAL_ELASTICSEARCH "false" }}
+  {{ .Values.VOLUME_ES_DATA }}:
+    driver: ${VOLUME_DRIVER}
+    external: true
+  {{- end }}
+  {{- if .Values.VOLUME_PUBLIC_OVERRIDE }}
+  {{ .Values.VOLUME_PUBLIC_OVERRIDE }}:
+    driver: ${VOLUME_DRIVER}
+    external: true
+  {{- end }}
