@@ -83,6 +83,10 @@
       description: Obtain from https://developers.google.com/maps/documentation/javascript/get-api-key
       required: true
       type: string
+    - variable: GOOGLE_SHEET_API_KEY
+      label: Google Sheets API v4 key (for Import Wizard to work with Google Spreadsheets)
+      description: Obtain from https://console.cloud.google.com/apis/library/sheets.googleapis.com
+      type: secret
     - variable: NEWRELIC_LICENSE_KEY
       label: New Relic License Key
       type: string

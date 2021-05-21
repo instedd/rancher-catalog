@@ -22,6 +22,9 @@ services:
       {{- if .Values.INTERCOM_APP_ID }}
       INTERCOM_APP_ID: ${INTERCOM_APP_ID}
       {{- end }}
+      {{- if .Values.GOOGLE_SHEET_API_KEY }}
+      SETTINGS__GOOGLE_SHEET_API_KEY: ${GOOGLE_SHEET_API_KEY}
+      {{- end }}
 
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
       SETTINGS__GOOGLE_MAPS_KEY: ${GOOGLE_MAPS_KEY}
