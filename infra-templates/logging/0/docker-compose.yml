@@ -25,7 +25,7 @@ services:
       io.rancher.scheduler.global: 'true'
   oauth2-proxy:
     image: quay.io/pusher/oauth2_proxy:v5.1.0
-    mem_reservation: 4m
+    mem_reservation: 6m
     mem_limit: 16m
     environment:
       OAUTH2_PROXY_CLIENT_ID: ${OAUTH2_PROXY_CLIENT_ID}

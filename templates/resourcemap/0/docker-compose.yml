@@ -71,7 +71,7 @@ services:
   db-migrate:
     <<: *app
     command: bundle exec rake db:migrate
-    mem_reservation: 4m
+    mem_reservation: 6m
     labels:
       io.rancher.container.pull_image: always
       io.rancher.container.start_once: "true"
