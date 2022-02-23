@@ -98,7 +98,11 @@
       required: true
 
     - variable: SENTRY_DSN
-      label: Sentry DSN
+      label: Sentry Private DSN
+      type: string
+      required: false
+    - variable: SENTRY_PUBLIC_DSN
+      label: Sentry Public DSN
       type: string
       required: false
 
