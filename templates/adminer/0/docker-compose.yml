@@ -11,7 +11,9 @@ services:
       - --http-address=http://0.0.0.0:8080
       - --pass-basic-auth=false
       - --github-org=${GITHUB_ORG}
+      {{- if .Values.GITHUB_TEAM }}
       - --github-team=${GITHUB_TEAM}
+      {{- end }}
     environment:
       OAUTH2_PROXY_COOKIE_SECRET: ${COOKIE_SECRET}
       OAUTH2_PROXY_CLIENT_ID: ${GITHUB_CLIENT_ID}
