@@ -12,6 +12,11 @@
       label: Base URL
       required: true
       type: string
+    
+    - variable: BROKER_BASE_URL
+      label: Broker Base URL
+      required: true
+      type: string
 
     - variable: DATABASE_HOST
       label: Database Host
