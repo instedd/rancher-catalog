@@ -34,7 +34,7 @@ services:
       io.rancher.container.pull_image: always
       io.rancher.scheduler.global: 'true'
   rancher-exporter:
-    image: infinityworks/prometheus-rancher-exporter
+    image: manastech/rancher-v1.6-prometheus-rancher-exporter
     labels:
       io.rancher.container.agent.role: environment
       io.rancher.container.create_agent: 'true'
