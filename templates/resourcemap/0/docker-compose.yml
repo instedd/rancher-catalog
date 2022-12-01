@@ -81,7 +81,7 @@ services:
     image: ${ELASTICSEARCH_IMAGE}
     environment:
       ES_HEAP_SIZE: ${ELASTICSEARCH_HEAP_SIZE}
-      ES_JAVA_OPTS: ${ELASTICSEARCH_JAVA_OPTS}
+      ES_JAVA_OPTS: -Des.cluster.name={{ .Stack.Name }} ${ELASTICSEARCH_JAVA_OPTS}
     volumes:
     - ${VOLUME_ELASTICSEARCH}:/usr/share/elasticsearch/data
     mem_limit: ${ELASTICSEARCH_MEM_LIMIT}

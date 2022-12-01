@@ -85,6 +85,8 @@ services:
   {{- if eq .Values.EXTERNAL_ELASTICSEARCH "false" }}
   elasticsearch:
     image: elasticsearch:2.4
+    environment:
+      ES_JAVA_OPTS: -Des.cluster.name={{ .Stack.Name }}
     volumes:
       - ${VOLUME_ES_DATA}:/usr/share/elasticsearch/data
     {{- if .Values.ES_MEM_LIMIT }}
