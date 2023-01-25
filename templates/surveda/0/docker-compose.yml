@@ -70,6 +70,7 @@ services:
       GUISSO_CLIENT_SECRET: ${GUISSO_CLIENT_SECRET}
       {{- end }}
 
+      {{- if .Values.NUNTIUM_APP_ID }}
       {{- if contains "," .Values.NUNTIUM_APP_ID }}
       {{- $nuntiumAppIds := split "," .Values.NUNTIUM_APP_ID }}
       {{- $nuntiumBaseUrls := split "," .Values.NUNTIUM_BASE_URL }}
@@ -97,7 +98,9 @@ services:
       NUNTIUM_GUISSO_BASE_URL: ${NUNTIUM_GUISSO_BASE_URL}
       NUNTIUM_CHANNEL_UI: ${NUNTIUM_CHANNEL_UI}
       {{- end }}
+      {{- end }}
 
+      {{- if .Values.VERBOICE_APP_ID }}
       {{- if contains "," .Values.VERBOICE_APP_ID }}
       {{- $verboiceAppIds := split "," .Values.VERBOICE_APP_ID }}
       {{- $verboiceBaseUrls := split "," .Values.VERBOICE_BASE_URL }}
@@ -124,6 +127,7 @@ services:
       VERBOICE_CLIENT_SECRET: ${VERBOICE_CLIENT_SECRET}
       VERBOICE_GUISSO_BASE_URL: ${VERBOICE_GUISSO_BASE_URL}
       VERBOICE_CHANNEL_UI: ${VERBOICE_CHANNEL_UI}
+      {{- end }}
       {{- end }}
 
     labels:
