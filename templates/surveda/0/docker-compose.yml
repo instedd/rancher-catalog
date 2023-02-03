@@ -29,6 +29,9 @@ services:
     {{- end }}
     environment:
       BROKER_BATCH_SIZE: ${BROKER_BATCH_SIZE}
+      {{- if .Values.BROKER_BATCH_LIMIT_PER_MINUTE }}
+      BROKER_BATCH_LIMIT_PER_MINUTE: ${BROKER_BATCH_LIMIT_PER_MINUTE}
+      {{- end }}
       DATABASE_HOST: ${DATABASE_HOST}
       DATABASE_NAME: ${DATABASE_NAME}
       DATABASE_PASS: ${DATABASE_PASS}
