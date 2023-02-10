@@ -37,7 +37,7 @@ services:
       EMAIL_FROM_NAME: ${EMAIL_FROM_NAME}
       {{- if .Values.URL_SHORTENER_API_KEY }}
       URL_SHORTENER_API_KEY: ${URL_SHORTENER_API_KEY}
-      {{- if .Values.URL_SHORTENER_API_KEY }}
+      {{- end }}
       {{- if .Values.URL_SHORTENER_SERVICE }}
       URL_SHORTENER_SERVICE: ${URL_SHORTENER_SERVICE}
       {{- end }}
