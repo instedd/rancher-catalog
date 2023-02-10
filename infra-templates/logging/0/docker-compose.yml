@@ -41,7 +41,7 @@ services:
     {{- if .Values.OAUTH2_PROXY_GITHUB_TEAM }}
     - --github-team=${OAUTH2_PROXY_GITHUB_TEAM}
     {{- end }}
-    - --scope="user:email"
+    - --scope=user:email
     labels:
       io.rancher.container.pull_image: always
       logging-proxy: {{ .Stack.Name }}
