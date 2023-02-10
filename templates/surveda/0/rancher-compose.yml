@@ -89,16 +89,10 @@
       required: true
       default: 20
     - variable: BROKER_BATCH_SIZE
-      label: Broker batch size
-      description: Max. active respondents per survey
+      label: Broker batch size (max. respondents started per minute)
       type: int
       required: true
       default: 100
-    - variable: BROKER_BATCH_LIMIT_PER_MINUTE
-      label: Broker batch limit per minute
-      description: Max. amount of respondents to activate per minute
-      type: int
-      required: false
 
     - variable: SECRET_KEY_BASE
       label: Secret key base (used to sign/encrypt session tokens)
