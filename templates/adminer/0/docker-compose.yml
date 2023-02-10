@@ -14,7 +14,7 @@ services:
       {{- if .Values.GITHUB_TEAM }}
       - --github-team=${GITHUB_TEAM}
       {{- end }}
-      - --scope=user:email
+      - --scope=user\:email
     environment:
       OAUTH2_PROXY_COOKIE_SECRET: ${COOKIE_SECRET}
       OAUTH2_PROXY_CLIENT_ID: ${GITHUB_CLIENT_ID}
