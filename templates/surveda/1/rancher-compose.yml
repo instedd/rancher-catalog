@@ -1,0 +1,185 @@
+.catalog:
+  name: Surveda
+  version: '0.2'
+  description: InSTEDD Surveda
+  minimum_rancher_version: v1.5.0
+  questions:
+    - variable: SURVEDA_VERSION
+      label: Surveda version
+      required: true
+      type: string
+    - variable: HOST
+      label: Host name
+      required: true
+      type: string
+
+    - variable: DATABASE_HOST
+      label: Database Host
+      required: true
+      type: string
+      default: db
+    - variable: DATABASE_USER
+      label: Database User
+      required: true
+      type: string
+      default: root
+    - variable: DATABASE_PASS
+      label: Database Password
+      type: password
+    - variable: DATABASE_NAME
+      label: Database Name
+      type: string
+      required: true
+      default: surveda
+
+    - variable: EMAIL_FROM_EMAIL
+      label: Email address for outgoing emails (used for user confirmation and password resets)
+      type: string
+      required: true
+      default: no-reply@instedd.org
+    - variable: EMAIL_FROM_NAME
+      label: Name for outgoing emails (used for user confirmation and password resets)
+      type: string
+      required: true
+      default: InSTEDD Surveda
+    - variable: SMTP_SERVER
+      label: SMTP server host
+      type: string
+      required: true
+    - variable: SMTP_PORT
+      label: SMTP server port
+      type: int
+      required: true
+      default: 587
+    - variable: SMTP_USER
+      label: SMTP user
+      type: string
+      required: true
+    - variable: SMTP_PASS
+      label: SMTP password
+      type: password
+      required: true
+
+    - variable: URL_SHORTENER_API_KEY
+      label: API Key for InSTEDD's URL shortener service (if used)
+      type: password
+      required: false
+    - variable: URL_SHORTENER_SERVICE
+      label: InSTEDD's URL shortener service URL (if not the default)
+      type: string
+      required: false
+    - variable: MOBILE_WEB_BASE_URL
+      label: Base URL for mobile web respondent links
+      type: string
+      required: false
+
+    - variable: INITIAL_ELIGIBILITY_RATE
+      label: Initial elegibility rate (%)
+      type: int
+      required: true
+      default: 70
+    - variable: INITIAL_RESPONSE_RATE
+      label: Initial response rate (%)
+      type: int
+      required: true
+      default: 2
+    - variable: INITIAL_VALID_RESPONDENT_RATE
+      label: Initial valid response rate (%)
+      type: int
+      required: true
+      default: 20
+    - variable: BROKER_BATCH_SIZE
+      label: "Broker batch size (max. respondents started per minute)"
+      type: int
+      required: true
+      default: 100
+
+    - variable: USELESS
+      label: "Just trying to check this works"
+      type: string
+      required: false
+
+    - variable: SECRET_KEY_BASE
+      label: Secret key base (used to sign/encrypt session tokens)
+      type: password
+      required: true
+
+    - variable: SENTRY_DSN
+      label: Sentry DSN
+      type: string
+      required: false
+
+    - variable: GUISSO_ENABLED
+      label: Enable Guisso for SSO
+      type: boolean
+      default: false
+      required: true
+    - variable: GUISSO_BASE_URL
+      label: GUISSO base URL
+      type: string
+    - variable: GUISSO_CLIENT_ID
+      label: GUISSO client ID
+      type: string
+    - variable: GUISSO_CLIENT_SECRET
+      label: GUISSO client secret
+      type: password
+
+    - variable: NUNTIUM_BASE_URL
+      label: Nuntium base URL
+      type: string
+    - variable: NUNTIUM_GUISSO_BASE_URL
+      label: Guisso base URL to access Nuntium
+      type: string
+    - variable: NUNTIUM_APP_ID
+      label: Surveda APP ID in Guisso to access Nuntium
+      type: string
+    - variable: NUNTIUM_CLIENT_ID
+      label: Surveda Client ID in Guisso to access Nuntium
+      type: string
+    - variable: NUNTIUM_CLIENT_SECRET
+      label: Surveda Client secret in Guisso to access Nuntium
+      type: string
+    - variable: NUNTIUM_FRIENDLY_NAME
+      label: Friendly name for Nuntium instance (only required when linking with more than one instance)
+      type: string
+    - variable: NUNTIUM_CHANNEL_UI
+      label: Enable (true) or disable (false) embedded UI to create and edit channels in Nuntium
+      type: string
+
+    - variable: VERBOICE_BASE_URL
+      label: Verboice base URL
+      type: string
+    - variable: VERBOICE_GUISSO_BASE_URL
+      label: Guisso base URL to access Verboice
+      type: string
+    - variable: VERBOICE_APP_ID
+      label: Surveda APP ID in Guisso to access Verboice
+      type: string
+    - variable: VERBOICE_CLIENT_ID
+      label: Surveda Client ID in Guisso to access Verboice
+      type: string
+    - variable: VERBOICE_CLIENT_SECRET
+      label: Surveda Client secret in Guisso to access Verboice
+      type: string
+    - variable: VERBOICE_FRIENDLY_NAME
+      label: Friendly name for Verboice instance (only required when linking with more than one instance)
+      type: string
+    - variable: VERBOICE_CHANNEL_UI
+      label: Enable (true) or disable (false) embedded UI to create and edit channels in Verboice
+      type: string
+
+    - variable: INTERCOM_APP_ID
+      label: Intercom App ID
+      type: string
+      required: false
+
+    - variable: APP_MEM_LIMIT
+      label: Memory limit (app process)
+      type: string
+      required: false
+      default: 512m
+    - variable: APP_MEM_RESERVATION
+      label: Memory reservation (app process)
+      type: string
+      required: false
+      default: 256m
