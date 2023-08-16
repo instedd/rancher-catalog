@@ -13,7 +13,7 @@ services:
       io.rancher.container.pull_image: always
       io.rancher.scheduler.global: 'true'
   proxy:
-    image: juanwaj/promproxy
+    image: manastech/promproxy
     environment:
       PROMPROXY_ENV_LABEL: ${PROMPROXY_ENV_LABEL}
     network_mode: host
