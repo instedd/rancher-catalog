@@ -1,7 +1,7 @@
 name: Prometheus Agents
 description: |
   Stack to run Prometheus agents to monitor a Rancher environment
-version: '0.1'
+version: '0.2'
 category: Monitoring
 maintainer: Juan Wajnerman <waj@manas.tech>
 license: The MIT License
