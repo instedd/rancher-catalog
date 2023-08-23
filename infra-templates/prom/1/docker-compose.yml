@@ -1,0 +1,66 @@
+version: '2'
+services:
+  node-exporter:
+    image: prom/node-exporter
+    network_mode: host
+    volumes:
+      - /:/host:ro,rslave
+    pid: host
+    command:
+      - --path.rootfs
+      - /host
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.scheduler.global: 'true'
+  proxy:
+    image: manastech/promproxy
+    environment:
+      PROMPROXY_ENV_LABEL: ${PROMPROXY_ENV_LABEL}
+    network_mode: host
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - ${PROMPROXY_PORT}:9999/tcp
+    labels:
+      io.rancher.container.dns: 'true'
+      io.rancher.container.pull_image: always
+      io.rancher.scheduler.global: 'true'
+  haproxy-exporter:
+    image: prom/haproxy-exporter
+    network_mode: host
+    command:
+      - --haproxy.scrape-uri=http://localhost:9000/haproxy_stats;csv
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.scheduler.global: 'true'
+  rancher-exporter:
+    image: manastech/rancher-v1.6-prometheus-rancher-exporter
+    labels:
+      io.rancher.container.agent.role: environment
+      io.rancher.container.create_agent: 'true'
+      io.rancher.container.pull_image: always
+  docker-cluster-exporter:
+    privileged: true
+    image: instedd/docker-cluster-exporter
+    network_mode: host
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /sys:/host/sys
+    pid: host
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.scheduler.global: 'true'
+
+  {{- if eq .Values.ENABLE_PROMTAIL "true" -}}
+  promtail:
+    privileged: true
+    image: manastech/promtail-rancher:2.8.4-1
+    environment:
+      LOKI_URL: ${LOKI_URL}
+      TENANT_ID: ${LOKI_TENANT_ID}
+      ENVIRONMENT: ${PROMPROXY_ENV_LABEL}
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      io.rancher.container.pull_image: always
+  {{- end -}}

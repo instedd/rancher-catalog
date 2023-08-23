@@ -1,0 +1,29 @@
+.catalog:
+  name: Prometheus Agents
+  version: '0.2'
+  description: Stack to run Prometheus agents to monitor a Rancher environment
+  minimum_rancher_version: v1.5.0
+  questions:
+    - variable: PROMPROXY_ENV_LABEL
+      label: Environment name
+      required: true
+      type: string
+    - variable: PROMPROXY_PORT
+      label: Listening port
+      required: true
+      type: int
+      default: 9999
+    - variable: ENABLE_PROMTAIL
+      label: Enable pushing logs with Promtail?
+      required: true
+      type: boolean
+      default: false
+    - variable: LOKI_URL
+      label: Full URL for Loki server if Promtail is enabled (eg. http://loki:3100/loki/api/v1/push)
+      required: false
+      type: string
+      default: http://loki:3100/loki/api/v1/push
+    - variable: LOKI_TENANT_ID
+      label: Tenant ID to use for pushed logs if Promtail is enabled
+      required: false
+      type: string
